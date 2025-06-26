@@ -1,0 +1,20 @@
+.layout-pagina {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdf4f8;
+  overflow-x: hidden;
+}
+
+/* Centraliza tudo que está dentro do <Outlet /> */
+.conteudo-pagina {
+  min-height: calc(100vh - var(--altura-navbar));
+  flex-direction: column;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;   /* horizontal */
+  align-items: center;       /* vertical */
+  padding: 2rem;
+  padding-top: 80px;         /* altura da navbar */
+  box-sizing: border-box;
+}

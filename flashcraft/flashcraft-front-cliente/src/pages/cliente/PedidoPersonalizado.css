@@ -1,0 +1,71 @@
+@import '../../styles/variables.css';
+
+.personalizado-container {
+  background: var(--fundo-suave);
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.formulario {
+  background: var(--branco);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.formulario h1 {
+  font-size: 1.8rem;
+  color: var(--primaria-escura);
+  margin-bottom: 1rem;
+}
+
+.formulario label {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+  resize: vertical;
+}
+
+.formulario textarea {
+  min-height: 100px;
+}
+
+.btn-rosa {
+  background-color: var(--primaria-viva);
+  color: var(--branco);
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-rosa:hover {
+  background-color: var(--primaria-hover);
+}
+
+.mensagem-sucesso {
+  text-align: center;
+  background: var(--branco);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+}

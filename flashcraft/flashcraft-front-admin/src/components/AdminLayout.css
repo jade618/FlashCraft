@@ -1,0 +1,25 @@
+@import '../styles/variables.css'; /* garante acesso às variáveis */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--fundo-suave);
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+  background-color: var(--fundo-suave);
+  overflow-y: auto; /* permite scroll vertical */
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+  .admin-content {
+    padding: 16px;
+  }
+}
+

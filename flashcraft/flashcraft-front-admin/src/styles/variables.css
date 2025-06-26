@@ -1,0 +1,11 @@
+/* 📁 src/styles/variables.css */
+
+:root {
+  --primaria-escura: #0A2A66;
+  --primaria-viva: #CA368E;
+  --primaria-hover: #A4266C;
+  --fundo-suave: #FDF4F8;
+  --texto: #6B7280;
+  --branco: #ffffff;
+  --altura-navbar: 80px;
+}

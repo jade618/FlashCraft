@@ -1,0 +1,108 @@
+/* 📄 AdminCategorias.css */
+
+@import '../../styles/variables.css';
+
+.admin-categorias {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: var(--branco);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.admin-categorias h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--primaria-escura);
+  text-align: center;
+}
+
+.adicionar-categoria {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.adicionar-categoria input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.adicionar-categoria button {
+  padding: 10px 18px;
+  background-color: var(--primaria-viva);
+  color: var(--branco);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.adicionar-categoria button:hover {
+  background-color: var(--primaria-hover);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: var(--fundo-suave);
+}
+
+thead th {
+  text-align: left;
+  padding: 12px;
+  font-weight: bold;
+  color: var(--primaria-escura);
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background-color: #fef0f6;
+}
+
+td input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+td button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+td button:first-of-type {
+  background-color: var(--primaria-viva);
+  color: var(--branco);
+}
+
+td button:first-of-type:hover {
+  background-color: var(--primaria-hover);
+}
+
+td button:last-of-type {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+td button:last-of-type:hover {
+  background-color: #ccc;
+}

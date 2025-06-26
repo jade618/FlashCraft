@@ -1,0 +1,60 @@
+.admin-login {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.admin-login h2 {
+  margin-bottom: 24px;
+}
+
+.admin-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-login input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.admin-login button {
+  padding: 12px;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-login button:hover {
+  background-color: #333;
+}
+
+.admin-login .erro {
+  color: red;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .admin-login {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+.btn-cadastro {
+  margin-top: 10px;
+  background-color: #666;
+}
+
+.btn-cadastro:hover {
+  background-color: #444;
+}
+

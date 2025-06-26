@@ -1,0 +1,57 @@
+.admin-compra-usuario {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.admin-compra-usuario h2 {
+  margin-bottom: 1rem;
+}
+
+.admin-compra-usuario form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.admin-compra-usuario form select,
+.admin-compra-usuario form input[type="text"],
+.admin-compra-usuario form input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.produtos-disponiveis ul,
+.itens-compra ul {
+  list-style: none;
+  padding: 0;
+}
+
+.produtos-disponiveis li,
+.itens-compra li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.produtos-disponiveis button,
+.itens-compra button {
+  margin-left: 1rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.itens-compra input[type="number"] {
+  width: 60px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mensagem {
+  margin-bottom: 1rem;
+  color: red;
+  font-weight: bold;
+}

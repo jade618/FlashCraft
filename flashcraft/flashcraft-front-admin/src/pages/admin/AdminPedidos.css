@@ -1,0 +1,183 @@
+@import '../../styles/variables.css';
+
+/* Container principal com sidebar */
+.admin-pedidos-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--fundo-suave);
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Área principal */
+.admin-pedidos-main {
+  flex-grow: 1;
+  padding: 2rem;
+  margin-left: 250px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.pedido-section {
+  margin-bottom: 3rem;
+  background-color: var(--branco);
+  border: 1px solid var(--primaria-viva);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 0.5s ease;
+}
+
+.pedido-section h1 {
+  font-size: 1.6rem;
+  color: var(--primaria-escura);
+  margin-bottom: 1.5rem;
+}
+
+/* Lista de pedidos */
+.pedido-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Estilo de cada card de pedido */
+.pedido-item {
+  background-color: var(--fundo-suave);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.pedido-item:hover {
+  transform: translateY(-2px);
+}
+
+.pedido-item div {
+  margin-bottom: 8px;
+  color: var(--texto);
+}
+
+.pedido-item strong {
+  color: var(--primaria-escura);
+}
+
+/* Seleção de status */
+.pedido-item select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 4px;
+  color: var(--primaria-escura);
+  background-color: #fff;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Botões */
+.pedido-actions {
+  margin-top: 1rem;
+}
+
+.pedido-actions button {
+  background-color: var(--primaria-viva);
+  color: var(--branco);
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.pedido-actions button:hover {
+  background-color: var(--primaria-hover);
+}
+
+.pedido-imagem img {
+  max-width: 240px;
+  max-height: 180px;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Mensagem de erro */
+.error-message {
+  padding: 1rem;
+  background-color: #ffe6e6;
+  color: #c62828;
+  border: 1px solid #c62828;
+  border-radius: 8px;
+  margin: 2rem;
+  text-align: center;
+}
+
+/* Mensagem de vazio */
+.empty-message {
+  font-style: italic;
+  color: var(--texto);
+  padding: 0.5rem 0;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .admin-pedidos-main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .pedido-section {
+    padding: 1rem;
+  }
+
+  .pedido-item {
+    padding: 1rem;
+  }
+
+  .pedido-item select {
+    max-width: 100%;
+  }
+
+  .pedido-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .pedido-imagem img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .pedido-item {
+    font-size: 0.95rem;
+  }
+
+  .pedido-actions button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Discover the World's Hidden Wonders</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scrollbar for desktop */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #CA368E;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #CA368E;
+    }
+
+    /* Image placeholders style */
+    .img-placeholder {
+      @apply bg-gray-300 flex items-center justify-center text-gray-400 text-3xl select-none rounded-lg;
+      user-select: none;
+    }
+
+    /* Truncate text for cards titles */
+    .truncate-2-lines {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+    }
+
+    /* Animation for interactive button */
+    button:hover {
+      filter: brightness(90%);
+      transition: filter 0.3s ease;
+    }
+    a:hover {
+      text-decoration: underline;
+      transition: text-decoration 0.3s ease;
+    }
+
+    /* Star rating styles */
+    .star {
+      color: #CA368E; /* amber-400 */
+    }
+
+    /* Focus outlines */
+    button:focus, a:focus, input:focus {
+      outline: 2px solid #2563eb; /* blue-600 */
+      outline-offset: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+  background-color: #E53D89;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #CA2D75; /* tom mais escuro */
+}
+.logo {
+  max-width: 100%;
+  height: auto;
+}
+
+
+  </style>
+</head>
+<body class="bg-[#FFFFFF] text-[#0A2A66] font-sans">
+
+  <header class="w-full border-b border-gray-300 bg-white sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-8">
+           <a href="index.html" class="flex items-center space-x-3 text-2xl font-bold text-[#0A2A66]">
+  <img src="fotos/f277adec-a0d4-41bc-b9e7-3b075444fe01.jpg" alt="Logo da empresa" class="h-12 w-auto max-w-full">
+  <span>FlashCraft</span>
+</a>
+
+        <ul class="hidden md:flex space-x-6 text-sm font-medium text-color-#CA368E">
+          <li><a href="#" class="hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded" >Impressôes 3d</a></li>
+          <li><a href="#" class="hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Cabine fotográfica</a></li>
+          <li><a href="#" class="hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Ofertas</a></li>
+          <li><a href="#" class="hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Novidades</a></li>
+          <li><a href="#" class="hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Blog</a></li>
+        </ul>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button aria-label="Search" class="hidden md:inline-flex items-center justify-center focus-visible:ring-2 focus-visible:ring-blue-600 rounded text-gray-700 hover:text-gray-900">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 10-10.61-10.61 7.5 7.5 0 0010.61 10.61z"/></svg>
+        </button>
+        <a href="login.html" role="button" tabindex="0" class="bg-black text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none">Sign in</a>
+        <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center focus-visible:ring-2 focus-visible:ring-blue-600 rounded text-gray-700 hover:text-gray-900">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-300">
+      <nav class="px-6 py-4 space-y-3 text-gray-700 font-medium text-base">
+        <a href="#" class="block hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Impressôes 3d</a>
+        <a href="#" class="block hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Cabine fotográfica</a>
+        <a href="#" class="block hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Ofertas</a>
+        <a href="#" class="block hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Novidades</a>
+        <a href="#" class="block hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-600 p-1 rounded">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <!-- Hero Section -->
+    <section aria-labelledby="hero-title" class="relative grid grid-cols-1 md:grid-cols-12 gap-6 mb-14">
+      <div class="md:col-span-6 flex flex-col justify-center order-2 md:order-1">
+        <h1 id="hero-title" class="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
+         Transforme ideias em  <br />
+          realidade <span class="font-semibold text-gray-700">peça, crie e imprima em 3D!</span>
+        </h1>
+        <p class="text-gray-600 mb-6 max-w-xl">
+Seja para negócios, presentes personalizados, protótipos ou soluções criativas, nossa impressão 3D garante qualidade, agilidade e inovação em cada camada. Explore, crie e surpreenda!        </p>
+        <button class="w-max bg-[#007BFF] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-[#0A2A66] focus-visible:ring-2 focus-visible:ring-[#007BFF] focus:outline-none"><a href="login.html">
+           acesse a loja!</a>
+        </button>
+
+          
+      </div>
+      <div class="md:col-span-6 order-1 md:order-2 grid grid-cols-2 md:grid-cols-3 gap-3 place-items-center">
+        <div class="w-40 h-40 rounded-lg img-placeholder select-none" aria-label="Placeholder image 1" tabindex="0"><img src="fotos/f277adec-a0d4-41bc-b9e7-3b075444fe01.jpg" alt=""></div>
+        <div class="w-28 h-28 rounded-lg img-placeholder select-none" aria-label="Placeholder image 2" tabindex="0"><img src="fotos/f277adec-a0d4-41bc-b9e7-3b075444fe01.jpg" alt=""></div>
+        <div class="w-36 h-36 rounded-lg img-placeholder select-none" aria-label="Placeholder image 3" tabindex="0"><img src="fotos/f277adec-a0d4-41bc-b9e7-3b075444fe01.jpg" alt=""></div>
+      </div>
+    </section>
+
+    <!-- Top Destinations -->
+    <section aria-labelledby="top-destinations-title" class="mb-14">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-5">
+        <h2 id="top-destinations-title" class="text-2xl font-bold">Produtos mais vendidos</h2>
+        
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <article tabindex="0" aria-label="Golden Bridge, Bà Nà Hills, Vietnam" class="bg-white shadow rounded-lg overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow">
+          <div class="w-full aspect-[4/3] img-placeholder flex items-center justify-center text-5xl" aria-hidden="true"><div class="w-80">
+  <img src="fotos/IMG-20250613-WA0031-removebg-preview.png" alt="Logo da empresa" class="w-full h-auto">
+</div>
+</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg truncate-2-lines select-text">Chaveiro de Harry Potter</h3>
+            <p class="text-gray-500 text-sm select-text">Suporte feito inspirado em the last of us! </p>
+          </div>
+        </article>
+        <article tabindex="0" aria-label="Dubrovnik, Croatia" class="bg-white shadow rounded-lg overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow">
+          <div class="w-full aspect-[4/3] img-placeholder flex items-center justify-center text-5xl" aria-hidden="true"><div class="w-80">
+  <img src="fotos/IMG-20250613-WA0024-removebg-preview.png" alt="Logo da empresa" class="w-full h-auto"></div>
+</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg truncate-2-lines select-text">Funco Pop personalizado </h3>
+            <p class="text-gray-500 text-sm select-text">Feito por encomenda!</p>
+          </div>
+        </article>
+        <article tabindex="0" aria-label="Hot Air Balloon Cappadocia, Turkey" class="bg-white shadow rounded-lg overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow">
+          <div class="w-full aspect-[4/3] img-placeholder flex items-center justify-center text-5xl" aria-hidden="true"><div class="w-80">
+  <img src="fotos/IMG-20250613-WA0033-removebg-preview.png" alt="Logo da empresa" class="w-full h-auto"></div></div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg truncate-2-lines select-text">Chaveiros personalizados</h3>
+            <p class="text-gray-500 text-sm select-text">Feito por encomenda!</p>
+          </div>
+        </article>
+        <article tabindex="0" aria-label="Sydney Harbour Bridge, Australia" class="bg-white shadow rounded-lg overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow">
+          <div class="w-full aspect-[4/3] img-placeholder flex items-center justify-center text-5xl" aria-hidden="true"><div class="w-80">
+  <img src="fotos/IMG-20250613-WA0048-removebg-preview.png" alt="Logo da empresa" class="w-full h-auto"></div></div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg truncate-2-lines select-text">Fotos na cabine de fotos</h3>
+            <p class="text-gray-500 text-sm select-text">Reserve o seu horário!</p>
+          </div>
+        </article>
+      </div>
+      <div class="mt-6 flex justify-end">
+        
+      </div>
+    </section>
+
+    <!-- Latest Stories -->
+    <section aria-labelledby="latest-stories-title" class="mb-14">
+      <div class="flex justify-between items-center mb-5">
+        <h2 id="latest-stories-title" class="text-2xl font-bold">Guia de compras</h2>
+        <button id="read-more-articles" type="button" class="rounded-full border border-black px-6 py-2 text-sm font-semibold hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none"><a href="login.html">Acesse a loja!</a></button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <article tabindex="0" class="md:col-span-2 bg-white shadow rounded-lg overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow" aria-label="Los Angeles food & drink guide: 10 things to try in Los Angeles, California - Food and Drink">
+          <div class="w-full aspect-[16/9] img-placeholder flex items-center justify-center text-5xl" aria-hidden="true"><div class="w-80">
+  <img src="fotos/1c8e593f1fe4c19cd26bc7043cc95446.jpg" alt="Logo da empresa" class="w-full h-auto"></div></div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg leading-snug mt-1 select-text">Descubra um novo mundo com as impressôes 3D!</h3>
+            <p class="mt-1 text-xs text-gray-500 select-text">Aug 18, 2024 · 4 min read</p>
+            <p class="mt-2 text-gray-600 text-sm select-text max-w-xl">Na FlashCraft, acreditamos que cada ideia merece ganhar forma. Com a impressão 3D, transformamos esboços em realidade</p>
+          </div>
+        </article>
+        <div class="flex flex-col space-y-4">
+          <article tabindex="0" class="flex bg-white shadow rounded-lg cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow" aria-label="15 South London Markets You'll Love: Best Markets in South London - Shopping">
+            <div class="w-24 aspect-square img-placeholder flex items-center justify-center text-3xl flex-shrink-0" aria-hidden="true"><div class="w-30">
+  <img src="fotos/sandra.png" alt="Logo da empresa" class="w-full h-auto"></div></div>
+            <div class="p-3 flex flex-col justify-between">
+              <p class="font-semibold text-gray-600 text-xs select-text">Dia de vendas</p>
+              <h4 class="font-semibold text-sm select-text leading-tight">Dia 26 de junho na EEEP Sandra Carvalho Costa</h4>
+              <p class="mt-1 text-xs text-gray-500 select-text">Não perca a oportunidade!</p>
+            </div>
+          </article>
+          <article tabindex="0" class="flex bg-white shadow rounded-lg cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow" aria-label="10 incredible hotels around the world you can book with points in 2024 - Hotels">
+            <div class="w-24 aspect-square img-placeholder flex items-center justify-center text-3xl flex-shrink-0" aria-hidden="true">🖼️</div>
+            <div class="p-3 flex flex-col justify-between">
+              <p class="font-semibold text-gray-600 text-xs select-text">Cabine de fotos</p>
+              <h4 class="font-semibold text-sm select-text leading-tight">Veja as fotográfias da nossa cabine de fotos!</h4>
+              <p class="mt-1 text-xs text-gray-500 select-text">Fotos tiradas no evento ESC (Encontro de sistemas e suas conexões)</p>
+            </div>
+          </article>
+          <article tabindex="0" class="flex bg-white shadow rounded-lg cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none hover:shadow-lg transition-shadow" aria-label="Visiting Chicago on a Budget: Affordable Eats and Attraction Deals - Travel Budget">
+            <div class="w-24 aspect-square img-placeholder flex items-center justify-center text-3xl flex-shrink-0" aria-hidden="true">🖼️</div>
+            <div class="p-3 flex flex-col justify-between">
+              <p class="font-semibold text-gray-600 text-xs select-text">Produtos personalizados</p>
+              <h4 class="font-semibold text-sm select-text leading-tight">Veja os produtos feitos por encomenda</h4>
+              <p class="mt-1 text-xs text-gray-500 select-text">Mais vendidos</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trekker's Highlights -->
+    <section aria-labelledby="trekker-highlights-title" class="mb-14">
+      <h2 id="trekker-highlights-title" class="text-2xl font-bold mb-6">Avaliações</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+        <!-- Profile & Review -->
+        <div class="bg-white shadow rounded-lg p-6 flex flex-col space-y-4 focus-visible:ring-2 focus-visible:ring-blue-600" tabindex="0" aria-label="Trekker Highlight by Maria Angelica">
+          <div class="flex items-center space-x-4">
+            <div class="w-16 h-16 rounded-full bg-gray-300 img-placeholder flex items-center justify-center text-2xl select-none" aria-hidden="true">🧍‍♀️</div>
+            <div>
+              <p class="font-bold text-lg select-text">Maria Angelica</p>
+              <p class="text-gray-500 text-sm select-text">Fotográfa</p>
+            </div>
+          </div>
+          <div aria-label="Star Rating" class="flex space-x-1 text-amber-400" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star text-gray-300" aria-hidden="true">★</span>
+            <span class="sr-only">4 out of 5 stars</span>
+          </div>
+          <blockquote class="text-gray-700 text-sm leading-relaxed select-text"> "Fiquei encantada com a qualidade das impressões 3D da FlashCraft! Encomendei um organizador personalizado para meu escritório e o resultado foi ainda melhor do que eu esperava. O atendimento foi super atencioso e a entrega chegou no prazo certinho. Dá pra ver o cuidado em cada detalhe — recomendo muito para quem busca algo único e bem feito!"</blockquote>
+        </div>
+        <!-- Image placeholder -->
+        <div class="w-full rounded-lg overflow-hidden aspect-[4/3] img-placeholder flex items-center justify-center text-5xl select-none" aria-label="Image placeholder for trekker highlight" tabindex="0">🖼️</div>
+        <!-- Video placeholder -->
+        <div class="w-full rounded-lg overflow-hidden aspect-[4/3] bg-gray-100 flex items-center justify-center cursor-pointer select-none" tabindex="0" aria-label="Video placeholder for Sunset from Daydream Yacht Cruise" role="button">
+          <div class="relative w-full h-full flex items-center justify-center">
+            <div class="w-16 h-16 bg-black bg-opacity-60 rounded-full flex items-center justify-center hover:bg-opacity-75 transition">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-6.518-3.75A1 1 0 007 8.317v7.365a1 1 0 001.234.97l6.518-1.966a1 1 0 000-1.848z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <button id="see-more-highlights" type="button" class="rounded-full border border-black px-6 py-2 text-sm font-semibold hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-blue-600 focus:outline-none">
+            Veja mais produtos!
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Newsletter CTA -->
+  <section class="bg-[#0A2A66] text-white py-12">
+  <div class="max-w-3xl mx-auto text-center px-6">
+    <h3 class="text-3xl font-extrabold mb-4">Receba novidades sobre impressão 3D direto no seu e-mail</h3>
+    <form id="newsletter-form" class="flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto" aria-label="Formulário de newsletter">
+      <input aria-label="Email address" type="email" required placeholder="Digite seu e-mail" class="p-3 rounded-md border border-transparent focus:border-[#E53D89] focus:outline-none text-[#0A2A66]" />
+      <button type="submit" class="bg-[#E53D89] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#CA2D75] focus-visible:ring-2 focus-visible:ring-white focus:outline-none">
+        Inscrever
+      </button>
+    </form>
+    <p class="text-xs mt-3 max-w-xs mx-auto text-gray-200 select-text">
+      Inscreva-se para receber dicas, lançamentos e ofertas especiais da FlashCraft. Leia nossa <a href="#" class="underline hover:text-white focus-visible:ring-2 focus-visible:ring-white">Política de Privacidade</a>.
+    </p>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+<footer class="bg-black text-gray-300 py-12">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <p class="font-bold text-white mb-4">FlashCraft</p>
+      <p class="text-gray-400">Inovação em impressão 3D para projetos únicos e criativos. Personalização, qualidade e entrega rápida.</p>
+      <div class="flex space-x-4 mt-4">
+        <a href="#" class="hover:text-white">Instagram</a>
+        <a href="#" class="hover:text-white">Facebook</a>
+        <a href="#" class="hover:text-white">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Empresa</p>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Sobre nós</a></li>
+        <li><a href="#" class="hover:text-white">Contato</a></li>
+        <li><a href="#" class="hover:text-white">Parcerias</a></li>
+        <li><a href="#" class="hover:text-white">Termos de uso</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Serviços</p>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Impressão 3D Personalizada</a></li>
+        <li><a href="#" class="hover:text-white">Cabine Fotográfica</a></li>
+        <li><a href="#" class="hover:text-white">Consultoria Criativa</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Ajuda</p>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Suporte</a></li>
+        <li><a href="#" class="hover:text-white">Dúvidas Frequentes</a></li>
+        <li><a href="#" class="hover:text-white">Política de devolução</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-xs text-center mt-8 text-gray-500 select-text">© 2024 FlashCraft - Todos os direitos reservados.</p>
+</footer>
+
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const expanded = mobileMenu.classList.toggle('hidden');
+      // ARIA expanded toggle for accessibility
+      mobileMenuBtn.setAttribute('aria-expanded', !expanded);
+    });
+
+    // Category filter buttons (top destinations)
+    const categoryButtons = document.querySelectorAll('[data-category]');
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        categoryButtons.forEach(btn => btn.classList.remove('bg-gray-200', 'text-gray-700', 'font-semibold'));
+        button.classList.add('bg-gray-200', 'text-gray-700', 'font-semibold');
+        // NOTE: This is a static UI mock, actual filtering logic would require data or API.
+        alert('Filtering destinations by category: ' + button.dataset.category);
+      });
+    });
+    // Initialize default selected category style
+    categoryButtons.forEach(btn => {
+      if(btn.dataset.category === 'Popular'){
+        btn.classList.add('bg-gray-200', 'text-gray-700', 'font-semibold');
+      }
+    });
+
+    // Newsletter form submission simulation
+    const newsletterForm = document.getElementById('newsletter-form');
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = newsletterForm.querySelector('input[type="email"]');
+      if(emailInput.value.trim() === '') return;
+      alert('Thank you for subscribing with ' + emailInput.value + '!');
+      newsletterForm.reset();
+    });
+
+    // Plan your trip button interaction
+    const planTripBtn = document.getElementById('plan-trip-btn');
+    planTripBtn.addEventListener('click', () => {
+      alert('Let\'s start planning your amazing trip!');
+    });
+
+    // Read more articles and Explore buttons interaction
+    document.getElementById('read-more-articles').addEventListener('click', () => {
+      alert('Loading more articles...');
+    });
+    document.getElementById('explore-btn').addEventListener('click', () => {
+      alert('Exploring all destinations...');
+    });
+
+    // See more highlights button interaction
+    document.getElementById('see-more-highlights').addEventListener('click', () => {
+      alert('Fetching more trekker highlights...');
+    });
+
+  </script>
+</body>
+</html>
+

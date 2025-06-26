@@ -1,0 +1,33 @@
+:root {
+  --chart-quantidade-color: #CA368E; /* primary vivid */
+  --chart-total-color: #0A2A66; /* primary dark */
+}
+
+.dashboard {
+  padding: 20px;
+}
+
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Ensure the chart canvas fills the container */
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Optional: style for axis labels and ticks */
+.chart-container .chartjs-render-monitor {
+  display: block;
+  max-width: 100%;
+}
+
+/* Fix for potential overflow or clipping issues */
+.chart-container svg {
+  overflow: visible !important;
+}

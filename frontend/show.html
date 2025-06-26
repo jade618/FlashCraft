@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlashCraft - Impressão 3D Inovadora</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    ::-webkit-scrollbar {
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #CA368E;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #A4266C;
+    }
+    
+    html {
+    scroll-behavior: smooth;
+  }
+
+
+  </style>
+<header class="sticky top-0 bg-white shadow z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-3 text-2xl font-bold text-[#0A2A66]">
+  <img src="fotos/f277adec-a0d4-41bc-b9e7-3b075444fe01.jpg" alt="Logo da empresa" class="h-12 w-auto max-w-full">
+  <span>FlashCraft</span>
+</a>
+
+
+    <!-- Botão mobile -->
+    <button id="menu-toggle" class="md:hidden text-[#0A2A66] focus:outline-none text-2xl">
+      ☰
+    </button>
+
+    <!-- Menu desktop -->
+    <ul class="hidden md:flex gap-6 text-sm font-medium text-[#0A2A66]">
+      <li><a href="#sobre" class="text-[#0A2A66]:text-[#CA368E]">Sobre</a></li>
+      <li><a href="#produtos" class="hover:text-[#CA368E]">Produtos</a></li>
+      <li><a href="#impressoes" class="hover:text-[#CA368E]">Impressão 3D</a></li>
+      <li><a href="#cabine" class="hover:text-[#CA368E]">Cabine Fotográfica</a></li>
+      <li><a href="#guia" class="hover:text-[#CA368E]">Guia de Compras</a></li>
+      <li><a href="#footer" class="hover:text-[#CA368E]">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Menu mobile -->
+  <ul id="mobile-menu" class="md:hidden hidden px-6 pb-4 text-sm font-medium bg-white shadow-md text-[#0A2A66]">
+    <li class="py-2"><a href="#sobre" class="block hover:text-[#CA368E]">Sobre</a></li>
+    <li class="py-2"><a href="#produtos" class="block hover:text-[#CA368E]">Produtos</a></li>
+    <li class="py-2"><a href="#impressoes" class="block hover:text-[#CA368E]">Impressão 3D</a></li>
+    <li class="py-2"><a href="#cabine" class="block hover:text-[#CA368E]">Cabine Fotográfica</a></li>
+    <li class="py-2"><a href="#guia" class="block hover:text-[#CA368E]">Guia de Compras</a></li>
+    <li class="py-2"><a href="#footer" class="block hover:text-[#CA368E]">Contato</a></li>
+  </ul>
+</header>
+
+
+  <main class="max-w-7xl mx-auto px-6">
+    <!-- Hero -->
+    <section class="text-center py-16">
+      <h1 class="text-5xl font-extrabold leading-tight mb-6 text-[#0A2A66]">Transforme <span class="text-[#CA368E]">ideias</span> em realidade</h1>
+      <p class="text-lg text-gray-600 mb-8">Conheça nossos produtos em destaque e personalize sua experiência.</p>
+      
+    </section>
+    <!-- Sobre nós -->
+  <section class="bg-[#FDF4F8] rounded-3xl py-12 px-6 mt-16" id="sobre">
+      <h2 class="text-4xl font-extrabold text-center text-[#0A2A66] mb-4">Sobre a <span class="text-[#CA368E]">FlashCraft</span></h2>
+      <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-10">Uma equipe apaixonada por transformar ideias em objetos reais. Criamos experiências únicas com impressão 3D e registros inesquecíveis em nossas cabines fotográficas.</p>
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="bg-white rounded-2xl shadow-md h-64 flex items-center justify-center">[Imagem Sobre]</div>
+        <div class="grid grid-cols-2 gap-6 text-sm">
+          <div class="bg-white p-5 rounded-xl shadow-md">
+            <h3 class="font-bold text-[#CA368E] mb-2">01 Inovação</h3>
+            <p>Buscamos sempre novas formas de criar produtos únicos para você.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl shadow-md">
+            <h3 class="font-bold text-[#CA368E] mb-2">02 Personalização</h3>
+            <p>Oferecemos itens exclusivos que refletem sua identidade.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl shadow-md">
+            <h3 class="font-bold text-[#CA368E] mb-2">03 Criatividade</h3>
+            <p>Inspiramos criatividade com soluções práticas e estéticas.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl shadow-md">
+            <h3 class="font-bold text-[#CA368E] mb-2">04 Experiência</h3>
+            <p>Unimos tecnologia e diversão para entregar mais do que produtos.</p>
+          </div>
+        </div>
+      </div>
+    </section><br>
+    <!-- Seções de Produtos -->
+    <section class="mb-16" id="produtos">
+      <h2 class="text-3xl font-bold mb-4 text-[#0A2A66]">Todos os <span class="text-[#CA368E]">Produtos</span></h2>
+      <div class="overflow-x-auto flex gap-6 pb-4 ">
+        <!-- Card -->
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg  text-[#0A2A66]">Funko Personalizado</h3>
+            <p class="text-sm text-gray-500">Feito por encomenda</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full"><a href="comprar.html">Comprar</a></button>
+          </div>
+        </div>
+        <!-- Repetir cards conforme necessário -->
+      </div>
+    </section>
+
+    
+    <section class="my-20 max-w-7xl mx-auto px-6" id="guia">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-3xl font-extrabold text-[#0A2A66]">
+      Guia de <span class="text-[#CA368E]">Compras</span>
+    </h2>
+    <div class="flex space-x-4">
+      <button id="scrollLeft" class="p-2 bg-[#CA368E] text-white rounded-full hover:bg-[#a52c6a]" aria-label="Scroll left">
+        &#8592;
+      </button>
+      <button id="scrollRight" class="p-2 bg-[#CA368E] text-white rounded-full hover:bg-[#a52c6a]" aria-label="Scroll right">
+        &#8594;
+      </button>
+    </div>
+  </div>
+
+  <div id="carousel" class="flex space-x-6 overflow-x-auto scroll-smooth no-scrollbar pb-4">
+    <!-- Card 1 -->
+    <div class="min-w-[320px] max-w-[320px] bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-5 flex flex-col">
+      <div class="w-full h-56 bg-gray-200 flex items-center justify-center rounded-lg text-5xl select-none">🖨️</div>
+      <h3 class="text-lg font-bold mt-4 text-[#0A2A66]">Como escolher sua impressão 3D</h3>
+      <p class="text-gray-600 text-sm mt-2">Aprenda a escolher o melhor material e modelo para sua peça personalizada.</p>
+      <a href="#" class="mt-4 text-[#CA368E] font-semibold hover:underline">Ver mais</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="min-w-[320px] max-w-[320px] bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-5 flex flex-col">
+      <div class="w-full h-56 bg-gray-200 flex items-center justify-center rounded-lg text-5xl select-none">📸</div>
+      <h3 class="text-lg font-bold mt-4 text-[#0A2A66]">Melhores poses na cabine de fotos</h3>
+      <p class="text-gray-600 text-sm mt-2">Dicas para tirar fotos incríveis com amigos e registrar momentos únicos.</p>
+      <a href="#" class="mt-4 text-[#CA368E] font-semibold hover:underline">Ver mais</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="min-w-[320px] max-w-[320px] bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-5 flex flex-col">
+      <div class="w-full h-56 bg-gray-200 flex items-center justify-center rounded-lg text-5xl select-none">🧠</div>
+      <h3 class="text-lg font-bold mt-4 text-[#0A2A66]">Crie seu modelo 3D do zero</h3>
+      <p class="text-gray-600 text-sm mt-2">Comece do básico com ferramentas gratuitas como TinkerCAD ou Blender.</p>
+      <a href="#" class="mt-4 text-[#CA368E] font-semibold hover:underline">Ver mais</a>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="min-w-[320px] max-w-[320px] bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-5 flex flex-col">
+      <div class="w-full h-56 bg-gray-200 flex items-center justify-center rounded-lg text-5xl select-none">🎁</div>
+      <h3 class="text-lg font-bold mt-4 text-[#0A2A66]">Ideias de presentes personalizados</h3>
+      <p class="text-gray-600 text-sm mt-2">Impressões criativas para datas especiais, como chaveiros, bonecos ou suportes.</p>
+      <a href="#" class="mt-4 text-[#CA368E] font-semibold hover:underline">Ver mais</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-gray-100 py-16" id="cabine">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-6">
+    <!-- Texto -->
+    <div class="md:w-1/2 mb-10 md:mb-0">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#0A2A66] mb-4">
+        CABINE DE <span class="text-[#CA368E]">FOTOS</span>
+      </h2>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Cabine fotográfica com design único, perfeitas para registrar momentos únicos com estilo e sofisticação. 
+      </p><br>
+      <a href="#formulario-agendamento" class="inline-block bg-[#CA368E] text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-[#a52c6a] transition duration-300">
+        Agendar Horário
+      </a>
+    </div>
+
+    <!-- Forma arredondada (simulando cabine ou moldura) -->
+    <div class="md:w-1/2 flex justify-center">
+      <div class="w-64 h-80 bg-gray-300 rounded-t-full"></div>
+    </div>
+  </div>
+</section><br>
+
+
+    <section class="mb-16" id="impressôes">
+      <h2 class="text-3xl font-bold mb-4 text-[#0A2A66]">Impressões  <span class="text-[#CA368E]">3D</span></h2>
+      <div class="overflow-x-auto flex gap-6 pb-4">
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+        <div class="min-w-[250px] max-w-[250px] bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="w-full h-48 bg-gray-200 rounded-t-xl flex items-center justify-center">🖼️</div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">Suporte Gamer</h3>
+            <p class="text-sm text-gray-500">Ideal para setup personalizado</p>
+            <button class="mt-3 bg-[#CA368E] text-white px-4 py-2 rounded hover:bg-[#A4266C] w-full">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#0A2A66] text-white py-12" id="footer">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <p class="font-bold mb-4">FlashCraft</p>
+        <p>Inovação em impressão 3D. Personalização e qualidade garantida.</p>
+      </div>
+      <div>
+        <p class="font-semibold mb-3">Empresa</p>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">Sobre</a></li>
+          <li><a href="#" class="hover:underline">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold mb-3">Serviços</p>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">Impressão 3D</a></li>
+          <li><a href="#" class="hover:underline">Cabine Fotográfica</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold mb-3">Ajuda</p>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">Suporte</a></li>
+          <li><a href="#" class="hover:underline">Termos</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center mt-8 text-sm text-gray-400">© 2024 FlashCraft. Todos os direitos reservados.</p>
+  </footer>
+</body>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+</html>

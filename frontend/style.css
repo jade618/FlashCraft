@@ -1,0 +1,343 @@
+:root {
+      --cor-roxo-escuro: #4b0c5a;
+      --cor-roxo-medio: #7a2496;
+      --cor-rosa-vibrante: #d52e7a;
+      --cor-azul: #114b7a;
+      --cor-cinza-claro: #f5f5f7;
+      --cor-texto: #1c1c1e;
+      --cor-texto-secundario: #6e6e73;
+      --cor-branco: #ffffff;
+      --cor-accent: var(--cor-rosa-vibrante);
+      --cor-fundo: var(--cor-cinza-claro);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      scroll-behavior: smooth;
+      margin: 0;
+      padding-top: 90px; /* navbar height */
+    }
+
+    /* Navbar custom */
+    .navbar {
+       background-color: var(--cor-branco);
+       box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+       font-weight: 600;
+       font-size: 0.95rem;
+       position: fixed;
+       width: 100%;
+       z-index: 1030;
+       top: 0
+}
+
+
+
+    .navbar-brand img {
+      height: 32px;
+      filter: drop-shadow(0 0 0.5px var(--cor-azul));
+    }
+
+    .nav-link {
+      color: var(--cor-texto-secundario);
+      transition: color 0.25s ease;
+    }
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link.active {
+      color: var(--cor-accent);
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, var(--cor-roxo-medio), var(--cor-rosa-vibrante));
+      color: var(--cor-branco);
+      text-align: center;
+      padding: 5rem 1.5rem 6rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      border-radius: 4rem 4rem 4rem 4rem;
+      box-shadow: 0 12px 35px rgb(213 46 122 / 0.6);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 6rem 1.5rem;
+
+    }
+    #hero h1 {
+      font-weight: 800;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      line-height: 1.1;
+    }
+    #hero p {
+      font-weight: 400;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+    }
+    #hero .btn-cta {
+      background-color: var(--cor-branco);
+      color: var(--cor-rosa-vibrante);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.8rem 2.5rem;
+      border-radius: 9999px;
+      box-shadow: 0 8px 20px rgb(213 46 122 / 0.4);
+      border: none;
+      transition: all 0.3s ease;
+    }
+    #hero .btn-cta:hover,
+    #hero .btn-cta:focus {
+      background-color: var(--cor-rosa-vibrante);
+      color: var(--cor-branco);
+      box-shadow: 0 12px 32px rgb(255 105 180 / 0.65);
+    }
+
+    /* Section Title common */
+    .section-title {
+      color: var(--cor-roxo-escuro);
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--cor-rosa-vibrante);
+      padding-left: 0.8rem;
+    }
+
+    /* Impressão 3D - Produtos */
+    #produtos-3d {
+      padding: 3rem 1rem 4rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #produtos-3d .card {
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgb(0 0 0 / 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background-color: var(--cor-branco);
+    }
+    #produtos-3d .card:hover,
+    #produtos-3d .card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgb(213 46 122 / 0.28);
+      z-index: 2;
+    }
+    #produtos-3d .card img {
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      object-fit: cover;
+      height: 240px;
+      width: 100%;
+    }
+    #produtos-3d .card-body {
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    #produtos-3d .card-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--cor-roxo-escuro);
+    }
+    #produtos-3d .card-text {
+      color: var(--cor-texto-secundario);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      min-height: 48px;
+    }
+    #produtos-3d .btn-product {
+      background-color: var(--cor-rosa-vibrante);
+      border: none;
+      color: var(--cor-branco);
+      font-weight: 600;
+      border-radius: 40px;
+      padding: 0.5rem 1.8rem;
+      box-shadow: 0 6px 14px rgb(213 46 122 / 0.55);
+      transition: background-color 0.3s ease;
+    }
+    #produtos-3d .btn-product:hover,
+    #produtos-3d .btn-product:focus {
+      background-color: var(--cor-roxo-medio);
+    }
+
+    /* Cabine de Fotos */
+    #cabine-fotos {
+      background-color: var(--cor-branco);
+      padding: 3rem 1.5rem 4rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 5rem auto;
+      border-radius: 1rem;
+      box-shadow: 0 8px 26px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.3rem;
+      text-align: center;
+    }
+    #cabine-fotos h2 {
+      color: var(--cor-roxo-escuro);
+      font-weight: 700;
+      font-size: 1.7rem;
+    }
+    #cabine-fotos p {
+      font-size: 1.05rem;
+      color: var(--cor-texto-secundario);
+      max-width: 420px;
+    }
+    #cabine-fotos .btn-cabine {
+      background-color: var(--cor-azul);
+      border: none;
+      padding: 0.7rem 2.4rem;
+      font-weight: 600;
+      color: var(--cor-branco);
+      border-radius: 40px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 8px 24px rgb(17 75 122 / 0.5);
+    }
+    #cabine-fotos .btn-cabine:hover,
+    #cabine-fotos .btn-cabine:focus {
+      background-color: var(--cor-roxo-medio);
+      box-shadow: 0 14px 35px rgb(122 36 150 / 0.7);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--cor-branco);
+      color: var(--cor-texto-secundario);
+      text-align: center;
+      padding: 1.2rem 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 576px) {
+      #cabine-fotos {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: left;
+      }
+      #cabine-fotos p {
+        max-width: 350px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      #produtos-3d .card img {
+        height: 240px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      #produtos-3d .card img {
+        height: 280px;
+      }
+      #cabine-fotos p {
+        max-width: 380px;
+      }
+    }
+ .secao-produtos-slider {
+  padding: 4rem 1.5rem;
+  background-color: var(--cor-fundo);
+  margin: 0 auto;
+}
+
+.titulo-slider {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cor-roxo-escuro);
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 4px solid var(--cor-rosa-vibrante);
+}
+
+.mt-grande {
+  margin-top: 4rem;
+}
+
+.lista-produtos-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.2rem;
+  padding-bottom: 1.5rem;
+  scroll-padding: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.produto-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background-color: var(--cor-branco);
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  width: 260px;
+  padding: 1rem 1rem 1.5rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 460px;
+ 
+}
+
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(213, 46, 122, 0.28);
+}
+
+.produto-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.nome-produto {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--cor-roxo-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.descricao-produto {
+  font-size: 0.95rem;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 1rem;
+  min-height: 48px;
+}
+
+.btn-comprar {
+  background-color: var(--cor-rosa-vibrante);
+  border: none;
+  color: var(--cor-branco);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.8rem;
+  border-radius: 40px;
+  box-shadow: 0 6px 14px rgba(213, 46, 122, 0.55);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-comprar:hover,
+.btn-comprar:focus {
+  background-color: var(--cor-roxo-medio);
+  transform: translateY(-2px);
+}
+
+.secao-produtos-slider .card img {
+  height: 240px;
+  object-fit: cover;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comprar Produto - FlashCraft</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #FFFFFF;
+      color: #0A2A66;
+      font-family: 'Inter', sans-serif;
+    }
+    a:focus, button:focus {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-300 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 text-2xl font-bold text-[#0A2A66]">
+  <img src="fotos/f277adec-a0d4-41bc-b9e7-3b075444fe01.jpg" alt="Logo da empresa" class="h-12 w-auto max-w-full">
+  <span>FlashCraft</span>
+</a>
+      <nav>
+        <a href="show.html" class="text-[#CA368E] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#CA368E] rounded px-2 py-1">Voltar à loja</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-10">
+    <div id="product-container" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <!-- Imagem do Produto -->
+      <div class="w-full rounded-lg shadow-md border border-gray-200 flex items-center justify-center bg-gray-50 min-h-[300px]">
+        <img id="product-image" src="" alt="Imagem do produto" class="max-w-full max-h-[400px] object-contain rounded-lg" />
+      </div>
+
+      <!-- Detalhes do Produto -->
+      <section class="flex flex-col justify-start space-y-6">
+        <h1 id="product-title" class="text-3xl font-extrabold leading-tight">Carregando...</h1>
+        <p id="product-price" class="text-4xl font-bold text-[#CA368E]">$0,00</p>
+
+        <div>
+          <label for="quantity" class="block text-sm font-semibold mb-1">Quantidade</label>
+          <select id="quantity" name="quantity" class="w-24 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#CA368E] focus:border-[#CA368E]">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <button id="add-to-cart-btn" class="bg-[#CA368E] hover:bg-[#a42e72] text-white font-semibold py-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-[#CA368E] transition">
+          Adicionar ao Carrinho
+        </button>
+
+        <section id="product-description" class="text-gray-700 text-base leading-relaxed">
+          <h2 class="font-semibold text-lg mb-2">Descrição do Produto</h2>
+          <p>Detalhes incríveis do produto aparecerão aqui assim que você selecionar um item para compra.</p>
+        </section>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-300 py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm select-text">
+      © 2024 FlashCraft - Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    // Função para obter parâmetros da URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Dados de exemplo para descrição e imagens - personalize como quiser
+    const productDetails = {
+      "Suporte de fones": {
+        description: "Suporte para fones de ouvido feito em material resistente e design moderno. Ideal para organização e decoração do seu espaço.",
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80"
+      },
+      "Funco Pop personalizado": {
+        description: "Boneco Funko Pop feito sob encomenda, com detalhes personalizados para colecionadores e fãs.",
+        image: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?auto=format&fit=crop&w=600&q=80"
+      },
+      "Chaveiros personalizados": {
+        description: "Chaveiros feitos por encomenda, personalizados com seu nome ou logo para presentear ou divulgar sua marca.",
+        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80"
+      },
+      "Cabine de fotos": {
+        description: "Reserve um horário na cabine fotográfica para capturar momentos especiais com qualidade e diversão.",
+        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+      }
+    };
+
+    // Preenche os dados da página
+    function populateProductInfo() {
+      const title = getQueryParam("produto") || "Produto Desconhecido";
+      const precoRaw = getQueryParam("preco") || "0";
+      const preco = parseFloat(precoRaw).toFixed(2).replace(".", ",");
+
+      const productTitleEl = document.getElementById("product-title");
+      const productPriceEl = document.getElementById("product-price");
+      const productDescriptionEl = document.getElementById("product-description");
+      const productImageEl = document.getElementById("product-image");
+
+      productTitleEl.textContent = title;
+      productPriceEl.textContent = `R$ ${preco}`;
+
+      if(productDetails[title]) {
+        productDescriptionEl.innerHTML = `
+          <h2 class="font-semibold text-lg mb-2">Descrição do Produto</h2>
+          <p>${productDetails[title].description}</p>
+        `;
+        productImageEl.src = productDetails[title].image;
+        productImageEl.alt = title;
+      } else {
+        productDescriptionEl.innerHTML = `
+          <h2 class="font-semibold text-lg mb-2">Descrição do Produto</h2>
+          <p>Detalhes do produto não disponíveis.</p>
+        `;
+        productImageEl.src = "https://via.placeholder.com/600x400?text=Imagem+Indisponível";
+        productImageEl.alt = "Imagem indisponível";
+      }
+    }
+
+    // Evento botão adicionar ao carrinho (simulação)
+    document.getElementById("add-to-cart-btn").addEventListener("click", () => {
+      const quantity = document.getElementById("quantity").value;
+      alert(`Você adicionou ${quantity} unidade(s) deste produto ao carrinho!`);
+    });
+
+    // Carregar dados na inicialização da página
+    populateProductInfo();
+  </script>
+</body>
+</html>

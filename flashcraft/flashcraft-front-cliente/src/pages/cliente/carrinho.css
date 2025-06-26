@@ -1,0 +1,148 @@
+.carrinho-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  background-color: #fdf4f8;
+  min-height: 100vh;
+}
+
+.carrinho-cabecalho {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.carrinho-cabecalho h1 {
+  font-size: 2.2rem;
+  color: #0a2a66;
+  font-weight: 800;
+}
+
+.carrinho-cabecalho .destaque {
+  color: #ca368e;
+}
+
+.carrinho-vazio {
+  text-align: center;
+  color: #777;
+  font-size: 1.1rem;
+  padding: 2rem 0;
+}
+
+.carrinho-itens {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.carrinho-card {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.carrinho-card:hover {
+  transform: translateY(-4px);
+}
+
+.imagem-carrinho {
+  flex: 0 0 160px;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagem-carrinho img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-carrinho {
+  flex: 1;
+  padding: 1.2rem 1rem;
+}
+
+.info-carrinho h3 {
+  font-size: 1.2rem;
+  color: #0a2a66;
+  margin-bottom: 0.5rem;
+}
+
+.info-carrinho p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+.info-carrinho button {
+  margin-top: 0.8rem;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.info-carrinho button:hover {
+  background-color: #d93636;
+}
+
+.carrinho-resumo {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.carrinho-resumo h2 {
+  font-size: 1.5rem;
+  color: #0a2a66;
+  margin-bottom: 1rem;
+}
+
+.carrinho-resumo span {
+  color: #ca368e;
+  font-weight: 700;
+}
+
+.btn-finalizar {
+  background-color: #ca368e;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-finalizar:hover {
+  background-color: #a4266c;
+}
+
+.btn-limpar {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.btn-limpar:hover {
+  background-color: #cfcfcf;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,134 @@
+.pagina-compras {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fdf4f8;
+  min-height: 100vh;
+}
+
+.cabecalho-compras {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cabecalho-compras h1 {
+  font-size: 2.5rem;
+  color: #0a2a66;
+  font-weight: 700;
+}
+
+.cabecalho-compras .destaque {
+  color: #ca368e;
+}
+
+.cabecalho-compras p {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.compras-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card-compra {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.card-compra:hover {
+  box-shadow: 0 10px 28px rgba(202, 54, 142, 0.1);
+}
+
+.imagem-compra {
+  width: 100%;
+  height: 180px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagem-compra img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-compra h3 {
+  font-size: 1.2rem;
+  color: #0a2a66;
+  margin-bottom: 0.5rem;
+}
+
+.card-compra .status {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.card-compra button {
+  background-color: #ca368e;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card-compra button:hover {
+  background-color: #a4266c;
+}
+
+.sem-compras {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+  grid-column: 1 / -1;
+}
+.badge-personalizado {
+  display: inline-block;
+  background: #ff005c;
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.sem-imagem {
+  background: #eee;
+  padding: 1rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.link-ausente {
+  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
+}
+.badge-cabine {
+  display: inline-block;
+  background: #005cff;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-top: 6px;
+}

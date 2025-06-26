@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin FlashCraft</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+    .section-title {
+      color: #CA368E;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="text-center mb-4" style="color:#0A2A66;">Painel de Administração FlashCraft</h1>
+
+    <!-- Estoque -->
+    <section class="mb-5">
+      <h2 class="section-title">Gerenciar Estoque</h2>
+      <form id="form-estoque" class="row g-3">
+        <div class="col-md-4">
+          <input type="text" id="produto-nome" class="form-control" placeholder="Nome do Produto" required />
+        </div>
+        <div class="col-md-3">
+          <input type="number" id="produto-quantidade" class="form-control" placeholder="Quantidade" min="0" required />
+        </div>
+        <div class="col-md-3">
+          <input type="number" id="produto-preco" class="form-control" placeholder="Preço (R$)" min="0" step="0.01" required />
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary w-100">Adicionar / Atualizar</button>
+        </div>
+      </form>
+
+      <table class="table table-striped mt-3" id="tabela-estoque">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço (R$)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Registrar Venda -->
+    <section class="mb-5">
+      <h2 class="section-title">Registrar Nova Venda</h2>
+      <form id="form-venda" class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <select id="venda-produto" class="form-select" required>
+            <option value="" disabled selected>Escolha um produto</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <input type="number" id="venda-quantidade" class="form-control" placeholder="Quantidade" min="1" required />
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success w-100">Registrar Venda</button>
+        </div>
+      </form>
+
+      <table class="table table-bordered mt-3" id="tabela-vendas">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Total (R$)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <th colspan="2" class="text-end">Total vendido:</th>
+            <th id="total-vendido">0.00</th>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Agendamento Cabine -->
+    <section class="mb-5">
+      <h2 class="section-title">Agendamento da Cabine de Fotos</h2>
+      <form id="form-agendamento" class="row g-3 align-items-center">
+        <div class="col-md-4">
+          <input type="datetime-local" id="agendamento-data" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+          <input type="number" id="agendamento-valor" class="form-control" placeholder="Valor (R$)" min="0" step="0.01" required />
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-warning w-100">Agendar</button>
+        </div>
+      </form>
+
+      <table class="table table-bordered mt-3" id="tabela-agendamentos">
+        <thead>
+          <tr>
+            <th>Data e Hora</th>
+            <th>Valor (R$)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <th>Total arrecadado:</th>
+            <th id="total-cabine">0.00</th>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    const estoque = [];
+    const vendas = [];
+    const agendamentos = [];
+
+    // Atualizar tabela estoque e dropdown de produtos
+    function atualizarEstoque() {
+      const tbody = document.querySelector('#tabela-estoque tbody');
+      const selectVenda = document.getElementById('venda-produto');
+      tbody.innerHTML = '';
+      selectVenda.innerHTML = '<option value="" disabled selected>Escolha um produto</option>';
+
+      estoque.forEach(produto => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${produto.nome}</td>
+          <td>${produto.quantidade}</td>
+          <td>${produto.preco.toFixed(2)}</td>
+        `;
+        tbody.appendChild(tr);
+
+        const option = document.createElement('option');
+        option.value = produto.nome;
+        option.textContent = produto.nome;
+        selectVenda.appendChild(option);
+      });
+    }
+
+    // Atualizar tabela vendas e total vendido
+    function atualizarVendas() {
+      const tbody = document.querySelector('#tabela-vendas tbody');
+      const totalVendidoEl = document.getElementById('total-vendido');
+      tbody.innerHTML = '';
+
+      let totalVendido = 0;
+      vendas.forEach(venda => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${venda.produto}</td>
+          <td>${venda.quantidade}</td>
+          <td>${venda.valorTotal.toFixed(2)}</td>
+        `;
+        tbody.appendChild(tr);
+        totalVendido += venda.valorTotal;
+      });
+      totalVendidoEl.textContent = totalVendido.toFixed(2);
+    }
+
+    // Atualizar tabela agendamentos e total cabine
+    function atualizarAgendamentos() {
+      const tbody = document.querySelector('#tabela-agendamentos tbody');
+      const totalCabineEl = document.getElementById('total-cabine');
+      tbody.innerHTML = '';
+
+      let totalCabine = 0;
+      agendamentos.forEach(ag => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${new Date(ag.data).toLocaleString('pt-BR')}</td>
+          <td>${ag.valor.toFixed(2)}</td>
+        `;
+        tbody.appendChild(tr);
+        totalCabine += ag.valor;
+      });
+      totalCabineEl.textContent = totalCabine.toFixed(2);
+    }
+
+    // Form estoque submit
+    document.getElementById('form-estoque').addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = document.getElementById('produto-nome').value.trim();
+      const quantidade = parseInt(document.getElementById('produto-quantidade').value);
+      const preco = parseFloat(document.getElementById('produto-preco').value);
+
+      if (!nome || quantidade < 0 || preco < 0) return;
+
+      const produtoExistente = estoque.find(p => p.nome.toLowerCase() === nome.toLowerCase());
+      if (produtoExistente) {
+        produtoExistente.quantidade = quantidade;
+        produtoExistente.preco = preco;
+      } else {
+        estoque.push({ nome, quantidade, preco });
+      }
+
+      atualizarEstoque();
+      e.target.reset();
+    });
+
+    // Form venda submit
+    document.getElementById('form-venda').addEventListener('submit', e => {
+      e.preventDefault();
+      const produtoNome = document.getElementById('venda-produto').value;
+      const quantidadeVenda = parseInt(document.getElementById('venda-quantidade').value);
+
+      if (!produtoNome || quantidadeVenda <= 0) return;
+
+      const produto = estoque.find(p => p.nome === produtoNome);
+      if (!produto) {
+        alert('Produto não encontrado.');
+        return;
+      }
+      if (produto.quantidade < quantidadeVenda) {
+        alert('Quantidade em estoque insuficiente.');
+        return;
+      }
+
+      produto.quantidade -= quantidadeVenda;
+      const valorTotal = produto.preco * quantidadeVenda;
+
+      vendas.push({ produto: produto.nome, quantidade: quantidadeVenda, valorTotal });
+      atualizarEstoque();
+      atualizarVendas();
+
+      e.target.reset();
+    });
+
+    // Form agendamento submit
+    document.getElementById('form-agendamento').addEventListener('submit', e => {
+      e.preventDefault();
+      const data = document.getElementById('agendamento-data').value;
+      const valor = parseFloat(document.getElementById('agendamento-valor').value);
+
+      if (!data || valor < 0) return;
+
+      // Verifica se já tem agendamento nesse horário (mesmo minuto)
+      const existe = agendamentos.some(ag => new Date(ag.data).getTime() === new Date(data).getTime());
+      if (existe) {
+        alert('Já existe um agendamento para esse horário.');
+        return;
+      }
+
+      agendamentos.push({ data, valor });
+      atualizarAgendamentos();
+
+      e.target.reset();
+    });
+
+    // Inicializa tabelas vazias
+    atualizarEstoque();
+    atualizarVendas();
+    atualizarAgendamentos();
+  </script>
+</body>
+</html>
