@@ -1,254 +1,176 @@
-import { useState, useEffect } from 'react';
-import AdminLayout from '../../components/AdminLayout';
-import './AdminProdutos.css';
+import React, { useEffect, useState } from 'react';
+import apiAdmin from '../../services/apiAdmin';
+import Sidebar from '../../components/Sidebar';
+import LogoutButton from '../../components/LogoutButton';
+import './AdminPedidos.css';
 
-function Produtos() {
-  const [produtos, setProdutos] = useState([]);
-  const [categorias, setCategorias] = useState([]);
-  const [modoEdicao, setModoEdicao] = useState(false);
-  const [editandoId, setEditandoId] = useState(null);
+const statusOptions = ['Em andamento', 'Entregue', 'Pronto', 'Cancelado'];
 
-  const [nome, setNome] = useState('');
-  const [descricao, setDescricao] = useState('');
-  const [preco, setPreco] = useState('');
-  const [quantidade, setQuantidade] = useState(0);
-  const [tipo, setTipo] = useState('');
-  const [disponivel, setDisponivel] = useState(true);
-  const [categoria, setCategoria] = useState('');
-  // Removendo a opção de nova categoria conforme solicitado
-const [novaCategoria, setNovaCategoria] = useState('');
-const [imagem, setImagem] = useState(null);
-
-  const [preview, setPreview] = useState(null);
-
-  useEffect(() => {
-    buscarProdutos();
-    buscarCategorias();
-  }, []);
-
-  async function buscarProdutos() {
-    const res = await fetch('http://localhost:3000/api/produtos');
-    const dados = await res.json();
-    setProdutos(dados);
-  }
-
-  async function buscarCategorias() {
-    const res = await fetch('http://localhost:3000/api/categorias');
-    const dados = await res.json();
-    setCategorias(dados);
-  }
-
-  function handleImagem(e) {
-    const file = e.target.files[0];
-    setImagem(file);
-    setPreview(file ? URL.createObjectURL(file) : null);
-  }
-
-  async function handleSubmit(e) {
-  e.preventDefault();
-
-  let categoriaFinalId = categoria;
-
-  if (novaCategoria.trim()) {
-    try {
-      const res = await fetch('http://localhost:3000/api/categorias', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome: novaCategoria })
-      });
-
-      const tipo = res.headers.get('Content-Type') || '';
-      if (!res.ok) {
-        const erro = tipo.includes('application/json')
-          ? await res.json()
-          : await res.text();
-
-        console.error('Erro ao criar categoria:', erro);
-        alert('Erro ao criar categoria: ' + (erro.erro || erro));
-        return;
-      }
-
-      const nova = await res.json();
-      categoriaFinalId = nova._id;
-    } catch (err) {
-      console.error('Erro de rede ao criar categoria:', err);
-      alert('Erro de rede ao criar categoria.');
-      return;
-    }
-  }
-
-  const form = new FormData();
-  form.append('nome', nome);
-  form.append('descricao', descricao);
-  form.append('preco', preco);
-  form.append('quantidade', quantidade);
-  form.append('tipo', tipo);
-  form.append('disponivel', disponivel);
-  form.append('categoria', categoriaFinalId);
-  if (imagem) form.append('imagem', imagem);
-
-  const url = modoEdicao
-    ? `http://localhost:3000/api/produtos/${editandoId}`
-    : 'http://localhost:3000/api/produtos';
-
-  const metodo = modoEdicao ? 'PUT' : 'POST';
-
-  try {
-    const res = await fetch(url, {
-      method: metodo,
-      body: form
-    });
-
-    const tipo = res.headers.get('Content-Type') || '';
-    if (!res.ok) {
-      const erro = tipo.includes('application/json')
-        ? await res.json()
-        : await res.text();
-
-      console.error('Erro ao salvar produto:', erro);
-      alert('Erro ao salvar produto: ' + (erro.erro || erro));
-      return;
-    }
-
-    resetarFormulario();
-    buscarProdutos();
-    buscarCategorias();
-  } catch (err) {
-    console.error('Erro de rede ao salvar produto:', err);
-    alert('Erro de rede ao salvar produto.');
-  }
-}
-
-
-  function resetarFormulario() {
-    setNome('');
-    setDescricao('');
-    setPreco('');
-    setQuantidade(0);
-    setTipo('');
-    setDisponivel(true);
-    setCategoria('');
-    setNovaCategoria('');
-    setImagem(null);
-    setPreview(null);
-    setModoEdicao(false);
-    setEditandoId(null);
-  }
-
-  function editarProduto(prod) {
-    setModoEdicao(true);
-    setEditandoId(prod._id);
-    setNome(prod.nome);
-    setDescricao(prod.descricao);
-    setPreco(prod.preco);
-    setQuantidade(prod.quantidade);
-    setTipo(prod.tipo);
-    setDisponivel(prod.disponivel);
-    setCategoria(prod.categoria?._id || prod.categoria);
-    setPreview(prod.imagem || prod.imagemUrl || null);
-  }
-
-  async function deletarProduto(id) {
-    if (!window.confirm('Deseja realmente excluir este produto?')) return;
-    await fetch(`http://localhost:3000/api/produtos/${id}`, { method: 'DELETE' });
-    buscarProdutos();
+// Recursive component to render list of orders of any type
+function PedidoList({ title, pedidos, type, onStatusChange, onCancel }) {
+  if (!pedidos || pedidos.length === 0) {
+    return (
+      <section className="pedido-section">
+        <h1>{title}</h1>
+        <p className="empty-message">Nenhum {title.toLowerCase()} encontrado.</p>
+      </section>
+    );
   }
 
   return (
-    <AdminLayout>
-      <div className="produtos-painel">
-        <form className="form-produto" onSubmit={handleSubmit}>
-          <h2>{modoEdicao ? 'Editar Produto' : 'Novo Produto'}</h2>
-
-          <label>Nome
-            <input type="text" value={nome} onChange={e => setNome(e.target.value)} required />
-          </label>
-
-          <label>Descrição
-            <textarea value={descricao} onChange={e => setDescricao(e.target.value)} rows={2} />
-          </label>
-
-          <label>Preço
-            <input type="number" step="0.01" value={preco} onChange={e => setPreco(e.target.value)} required />
-          </label>
-
-          <label>Quantidade
-            <input type="number" value={quantidade} onChange={e => setQuantidade(e.target.value)} min="0" />
-          </label>
-
-          <label>Tipo
-            <select value={tipo} onChange={e => setTipo(e.target.value)} required>
-              <option value="">Selecione</option>
-              <option value="padrao">Padrão</option>
-              <option value="personalizado">Personalizado</option>
-              <option value="agendamento">Agendamento</option>
-            </select>
-          </label>
-
-          <label>Categoria existente
-            <select value={categoria} onChange={e => setCategoria(e.target.value)}>
-              <option value="">Selecione</option>
-              {categorias.map(cat => (
-                <option key={cat._id} value={cat._id}>{cat.nome}</option>
-              ))}
-            </select>
-          </label>
-
-          {/* Removendo a opção de nova categoria conforme solicitado */}
-          {/*
-          <label>Nova categoria (opcional)
-            <input type="text" value={novaCategoria} onChange={e => setNovaCategoria(e.target.value)} />
-          </label>
-          */}
-
-          <label>
-            <input type="checkbox" checked={disponivel} onChange={e => setDisponivel(e.target.checked)} />
-            Produto disponível
-          </label>
-
-          <label>Imagem
-            <input type="file" accept="image/*" onChange={handleImagem} />
-          </label>
-
-          {preview && (
-            <div className="preview-img">
-              <img src={preview} alt="Prévia" />
-            </div>
-          )}
-
-          <div className="botoes-form">
-            <button type="submit">{modoEdicao ? 'Salvar Alterações' : 'Cadastrar Produto'}</button>
-            {modoEdicao && (
-              <button type="button" className="cancelar" onClick={resetarFormulario}>Cancelar</button>
+    <section className="pedido-section">
+      <h1>{title}</h1>
+      <ul className="pedido-list">
+        {pedidos.map((pedido) => (
+          <li key={pedido._id} className="pedido-item">
+            <div><strong>Cliente:</strong> {pedido.nomeCliente || pedido.nome || pedido.usuario?.nome || 'Nome não informado'}</div>
+            {type === 'pedido' && (
+              <>
+                <div><strong>Código da Compra:</strong> {pedido.codigoFicha || 'Não informado'}</div>
+                <div><strong>Produto:</strong> {pedido.produto?.nome || 'Produto não informado'}</div>
+                <div><strong>Quantidade:</strong> {pedido.quantidade || 'Não informado'}</div>
+                <div><strong>Email:</strong> {pedido.emailCliente || pedido.usuario?.email || 'Email não informado'}</div>
+                <div><strong>Link:</strong> {pedido.linkReferencia || 'Não informado'}</div>
+                <div><strong>Preço:</strong> R$ {pedido.produto?.preco ? parseFloat(pedido.produto.preco).toFixed(2) : 'Não informado'}</div>
+              </>
             )}
-          </div>
-        </form>
-
-        <div className="lista-produtos">
-          <h2>Produtos</h2>
-          <div className="grid-produtos">
-            {produtos.map(prod => (
-              <div key={prod._id} className="card-produto">
-                <img src={prod.imagem || prod.imagemUrl || '/img/placeholder.png'} alt={prod.nome} />
-                <h3>{prod.nome}</h3>
-                <p className="descricao">{prod.descricao}</p>
-                <span className="categoria">{prod.categoria?.nome || 'Sem categoria'}</span>
-                <span className="preco">R$ {parseFloat(prod.preco).toFixed(2)}</span>
-                <span className="estoque">{prod.quantidade} em estoque</span>
-                <span className={`disponivel ${prod.disponivel ? 'ok' : 'off'}`}>
-                  {prod.disponivel ? 'Disponível' : 'Indisponível'}
-                </span>
-                <div className="acoes">
-                  <button onClick={() => editarProduto(prod)}>Editar</button>
-                  <button className="remover" onClick={() => deletarProduto(prod._id)}>Excluir</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </AdminLayout>
+            {type === 'solicitacao' && (
+              <>
+                <div><strong>Descrição:</strong> {pedido.descricao}</div>
+                <div><strong>Email:</strong> {pedido.email || 'Email não informado'}</div>
+                <div><strong>Link:</strong> {pedido.linkReferencia || 'Não informado'}</div>
+                {pedido.imagemUrl && (
+                  <div className="pedido-imagem">
+                    <img src={pedido.imagemUrl} alt="Imagem do pedido personalizado" />
+                  </div>
+                )}
+              </>
+            )}
+            {type === 'agendamento' && (
+              <>
+                <div><strong>Data/Hora:</strong> {new Date(pedido.dataHora).toLocaleString()}</div>
+                <div><strong>Email:</strong> {pedido.email || 'Email não informado'}</div>
+              </>
+            )}
+            <div>
+              <strong>Status:</strong>
+              <select
+                value={pedido.status ? pedido.status.charAt(0).toUpperCase() + pedido.status.slice(1) : ''}
+                onChange={(e) => onStatusChange(pedido._id, type, e.target.value)}
+              >
+                <option value="" disabled>Selecione o status</option>
+                {statusOptions.map((status) => (
+                  <option key={status} value={status}>{status}</option>
+                ))}
+              </select>
+            </div>
+            <div className="pedido-actions">
+              <button onClick={() => onCancel(pedido._id, type)}>Cancelar</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
-export default Produtos;
+function AdminPedidos() {
+  const [pedidos, setPedidos] = useState([]);
+  const [solicitacoes3D, setSolicitacoes3D] = useState([]);
+  const [agendamentosCabine, setAgendamentosCabine] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchPedidos() {
+      try {
+        const response = await apiAdmin.get('/pedidos');
+        setPedidos(response.data.pedidos || []);
+        setSolicitacoes3D(response.data.solicitacoes3D || []);
+        setAgendamentosCabine(response.data.agendamentosCabine || []);
+      } catch (err) {
+        setError('Erro ao buscar pedidos: ' + err.message);
+      }
+    }
+    fetchPedidos();
+  }, []);
+
+  const handleCancel = async (id, type) => {
+    try {
+      let url = '';
+      if (type === 'pedido' || type === 'solicitacao') {
+        url = `/pedidos/${id}/cancelar`;
+      } else if (type === 'agendamento') {
+        alert('Cancelar agendamento ainda não implementado');
+        return;
+      }
+      await apiAdmin.put(url, { type });
+      alert(`${type} cancelado com sucesso.`);
+      const response = await apiAdmin.get('/pedidos');
+      setPedidos(response.data.pedidos || []);
+      setSolicitacoes3D(response.data.solicitacoes3D || []);
+      setAgendamentosCabine(response.data.agendamentosCabine || []);
+    } catch (err) {
+      alert('Erro ao cancelar: ' + err.message);
+    }
+  };
+
+  const handleChangeStatus = async (id, type, newStatus) => {
+    if (!newStatus || !statusOptions.includes(newStatus)) {
+      alert('Status inválido. Por favor, escolha um dos seguintes: ' + statusOptions.join(', '));
+      return;
+    }
+    try {
+      let url = '';
+      if (type === 'pedido' || type === 'solicitacao' || type === 'agendamento') {
+        url = `/pedidos/${id}/status`;
+      } else {
+        alert('Tipo inválido para alteração de status');
+        return;
+      }
+      await apiAdmin.put(url, { status: newStatus, type });
+      alert(`${type} atualizado com sucesso.`);
+      const response = await apiAdmin.get('/pedidos');
+      setPedidos(response.data.pedidos || []);
+      setSolicitacoes3D(response.data.solicitacoes3D || []);
+      setAgendamentosCabine(response.data.agendamentosCabine || []);
+    } catch (err) {
+      alert('Erro ao atualizar status: ' + err.message);
+    }
+  };
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
+
+  return (
+    <div className="admin-pedidos-container">
+      <Sidebar />
+      <LogoutButton />
+      <main className="admin-pedidos-main">
+        <PedidoList
+          title="Pedidos Padrão"
+          pedidos={pedidos}
+          type="pedido"
+          onStatusChange={handleChangeStatus}
+          onCancel={handleCancel}
+        />
+        <PedidoList
+          title="Pedidos 3D Personalizados"
+          pedidos={solicitacoes3D}
+          type="solicitacao"
+          onStatusChange={handleChangeStatus}
+          onCancel={handleCancel}
+        />
+        <PedidoList
+          title="Agendamentos de Cabine Fotográfica"
+          pedidos={agendamentosCabine}
+          type="agendamento"
+          onStatusChange={handleChangeStatus}
+          onCancel={handleCancel}
+        />
+      </main>
+    </div>
+  );
+}
+
+export default AdminPedidos;

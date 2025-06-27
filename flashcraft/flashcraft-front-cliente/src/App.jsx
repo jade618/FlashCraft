@@ -31,7 +31,7 @@ function App() {
         <Route element={<RotaPrivada><Layout /></RotaPrivada>}>
           <Route path="/" element={<Navigate to="/produtos" />} />
           <Route path="/produtos" element={<Produtos />} />
-          <Route path="/produto/:id" element={<DetalheProduto />} />
+          <Route path="/produtos/:id" element={<DetalheProduto />} />
           <Route path="/personalizar" element={<PedidoPersonalizado />} />
           <Route path="/meus-pedidos" element={<HistoricoPedidos />} />
           <Route path="/carrinho" element={<Carrinho />} /> {/* ✅ NOVA ROTA */}

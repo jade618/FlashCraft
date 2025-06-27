@@ -1,70 +1,116 @@
 .cadastro-login {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 460px;
+  margin: 60px auto;
+  padding: 30px;
   background-color: var(--fundo-suave);
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(10, 42, 102, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(10, 42, 102, 0.15);
   color: var(--primaria-escura);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+body{
+  background-color: aqua;
 }
 
 .cadastro-login h1 {
   text-align: center;
   color: var(--primaria-viva);
-  margin-bottom: 20px;
+  font-size: 26px;
+  margin-bottom: 25px;
 }
 
 .cadastro-login label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 600;
+  font-size: 15px;
 }
 
 .cadastro-login input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--primaria-escura);
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1.5px solid var(--primaria-escura);
+  border-radius: 6px;
+  font-size: 15px;
   color: var(--primaria-escura);
   background-color: var(--branco);
-  transition: border-color 0.3s ease;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cadastro-login input:focus {
   border-color: var(--primaria-viva);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(202, 54, 142, 0.2);
 }
 
 .cadastro-login button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background-color: var(--primaria-viva);
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--branco);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cadastro-login button:hover {
   background-color: var(--primaria-hover);
+  transform: scale(1.02);
+}
+
+.cadastro-login button:active {
+  transform: scale(0.98);
 }
 
 .erro {
+  background-color: #fdecea;
+  border-left: 4px solid #e63946;
   color: #e63946;
+  padding: 10px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  border-radius: 4px;
   text-align: center;
 }
 
 .sucesso {
+  background-color: #e0f8f4;
+  border-left: 4px solid #2a9d8f;
   color: #2a9d8f;
+  padding: 10px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  border-radius: 4px;
   text-align: center;
+}
+
+/* Scroll estilizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf4f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ca368e;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a4266c;
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+  .cadastro-login {
+    padding: 20px;
+    margin: 30px 20px;
+  }
 }

@@ -1,60 +1,92 @@
-.admin-login {
+.login-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--fundo-suave);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.login-card {
+  background-color: var(--branco);
+  border: 2px solid var(--primaria-viva);
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
   max-width: 400px;
-  margin: 80px auto;
-  padding: 30px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.admin-login h2 {
-  margin-bottom: 24px;
+.login-card h2 {
+  color: var(--primaria-escura);
+  margin-bottom: 2rem;
+  font-size: clamp(1.4rem, 4vw, 2rem);
 }
 
-.admin-login form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.admin-login input {
+.login-card input {
+  width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border: 1px solid var(--primaria-escura);
   border-radius: 6px;
+  font-size: 1rem;
+  color: var(--texto);
+  background-color: #fff;
 }
 
-.admin-login button {
+.login-card button {
+  width: 100%;
   padding: 12px;
-  background-color: #1a1a1a;
-  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primaria-viva);
+  color: var(--branco);
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.25s ease;
 }
 
-.admin-login button:hover {
-  background-color: #333;
+.login-card button:hover {
+  background-color: var(--primaria-hover);
 }
 
-.admin-login .erro {
-  color: red;
-  margin-top: 10px;
+.link-extra {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--texto);
 }
 
-@media (max-width: 480px) {
-  .admin-login {
-    width: 90%;
-    padding: 20px;
+.link-extra a {
+  color: var(--primaria-viva);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-extra a:hover {
+  text-decoration: underline;
+}
+
+.mensagem-erro {
+  background-color: #ffe6e6;
+  color: #e53935;
+  border: 1px solid #e53935;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 12px;
+  animation: surgirErro 0.3s ease;
+}
+
+@keyframes surgirErro {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-
-.btn-cadastro {
-  margin-top: 10px;
-  background-color: #666;
-}
-
-.btn-cadastro:hover {
-  background-color: #444;
-}
-

@@ -24,9 +24,9 @@ function LoginAdmin() {
   };
 
   return (
-    <div className="admin-login">
-      <h1>Login Admin</h1>
-      <form onSubmit={handleLogin}>
+    <div className="login-wrapper">
+      <form className="login-card" onSubmit={handleLogin}>
+        <h2>Login Admin</h2>
         <input
           type="email"
           placeholder="E-mail"
@@ -41,15 +41,14 @@ function LoginAdmin() {
           onChange={(e) => setSenha(e.target.value)}
           required
         />
-        {erro && <p className="erro">{erro}</p>}
         <button type="submit">Entrar</button>
-        <button
-          type="button"
-          className="btn-cadastro"
-          onClick={() => navigate('/admin/cadastrar')}
-        >
-          Criar Conta Admin
-        </button>
+        {erro && <p className="mensagem-erro">{erro}</p>}
+        <p className="link-extra">
+          Ainda não tem conta?{' '}
+          <a onClick={() => navigate('/admin/cadastrar')} style={{ cursor: 'pointer' }}>
+            Cadastre-se
+          </a>
+        </p>
       </form>
     </div>
   );

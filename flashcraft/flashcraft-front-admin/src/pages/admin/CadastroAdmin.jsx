@@ -28,7 +28,7 @@ const CadastroAdmin = () => {
     }
 
     try {
-      await apiAdmin.post('/usuarios/cadastrar', { nome, email, senha, senhaPadrao });
+      await apiAdmin.post('/admin/cadastro', { nome, email, senha, senhaPadrao });
       setSucesso('Usuário cadastrado com sucesso.');
       setNome('');
       setEmail('');
