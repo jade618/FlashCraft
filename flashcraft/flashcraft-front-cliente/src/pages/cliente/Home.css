@@ -4,8 +4,29 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--fundo-suave);
+  color: var(--primaria-escura);
+  scroll-behavior: smooth;
 }
 
+/* Scroll rosa customizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--fundo-suave);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primaria-viva);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primaria-hover);
+}
+
+/* Container principal */
 .home {
   display: flex;
   flex-direction: column;
@@ -16,110 +37,138 @@ html, body, #root {
   scroll-behavior: smooth;
 }
 
-/* Scroll rosa */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--fundo-suave);
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--primaria-viva);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primaria-hover);
-}
-
-/* HERO */
+/* HERO SECTION */
 .hero {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - var(--altura-navbar));
-  padding: 2rem 1rem;
-  gap: 2rem;
+  padding: 3rem 1.5rem 4rem;
+  gap: 2.5rem;
   text-align: center;
+  animation: fadeInUp 0.8s ease forwards;
+  background: linear-gradient(135deg, #f8eaf4 0%, #f1c7e7 100%);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(202, 54, 142, 0.15);
 }
 
 .hero-conteudo h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.75rem;
+  margin-bottom: 1.25rem;
+  font-weight: 800;
+  color: var(--primaria-escura);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
 }
 
 .hero-conteudo p {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   color: var(--texto);
-  max-width: 600px;
-  margin: 0 auto 1.5rem;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
 }
 
 .btn-loja {
   background-color: var(--primaria-viva);
   color: var(--branco);
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.125rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 14px rgba(202, 54, 142, 0.4);
+  user-select: none;
 }
-
-.btn-loja:hover {
+.btn-loja:hover,
+.btn-loja:focus {
   background-color: var(--primaria-hover);
+  box-shadow: 0 8px 18px rgba(202, 54, 142, 0.6);
+  outline: none;
 }
 
 .hero-img {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-.hero-img img {
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: contain;
-}
-.produtos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  max-width: 520px;
+  animation: fadeInRight 1s ease forwards;
 }
 
+.hero-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* PRODUTOS PERSONALIZADOS */
+.produtos {
+  padding: 4rem 1rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.titulo-secao {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--primaria-escura);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.titulo-secao::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 5px;
+  background-color: var(--primaria-viva);
+  margin: 12px auto 0;
+  border-radius: 3px;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Cards dos produtos */
 .card-produto {
   position: relative;
   background: var(--branco);
-  border: 1px solid #f4cfe2;
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid #f4cfe2;
+  border-radius: 18px;
+  padding: 1.5rem 1.25rem 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   width: 100%;
-  max-width: 320px;
+  max-width: 350px;
   cursor: pointer;
+  user-select: none;
 }
 
 .card-produto:hover {
-  transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 12px 32px rgba(202, 54, 142, 0.15);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(202, 54, 142, 0.2);
+  border-color: var(--primaria-viva);
 }
 
 .card-produto::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
   background: radial-gradient(circle at center, #fff0f8 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.4s;
@@ -132,11 +181,12 @@ html, body, #root {
 
 .card-produto img.imagem-produto {
   width: 100%;
-  height: 220px;
+  height: 230px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  border: 2px solid var(--fundo-suave);
+  border-radius: 14px;
+  margin-bottom: 1.25rem;
+  border: 2.5px solid var(--fundo-suave);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
   z-index: 1;
 }
 
@@ -144,69 +194,74 @@ html, body, #root {
 .card-produto p {
   position: relative;
   z-index: 1;
+  color: var(--primaria-escura);
 }
 
+.card-produto h3 {
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
 
-/* ... restante permanece igual (guia, evento, rodapé etc.) */
-
-
-/* GUIA */
+/* GUIA DE COMPRAS */
 .guia {
-  padding: 4rem 1rem;
+  padding: 4rem 1.5rem 5rem;
   background: var(--branco);
   text-align: center;
+  animation: fadeInUp 0.8s ease forwards;
+  border-radius: 14px;
+  max-width: 900px;
+  margin: 3rem auto 4rem;
+  box-shadow: 0 8px 30px rgba(202, 54, 142, 0.12);
 }
 
 .texto-destaque {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--primaria-hover);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.03em;
 }
 
-/* EVENTO */
-.evento {
-  padding: 3rem 1rem;
-  background: var(--primaria-viva);
-  color: var(--branco);
-  text-align: center;
-}
-
-.logo-escola {
-  background-color: var(--branco);
-  border-radius: 50%;
-  padding: 0.5rem;
-  max-width: 90px;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.evento-destaque {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
+.guia p {
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: var(--texto);
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
 /* RODAPÉ */
 .rodape {
-  background: var(--primaria-escura);
+  background: linear-gradient(135deg, var(--primaria-escura), #091c45);
   color: var(--branco);
-  padding: 3rem 1rem 2rem;
+  padding: 4rem 2rem 2rem;
+  animation: fadeInUp 0.8s ease forwards;
+  user-select: none;
 }
 
 .rodape-grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  margin-bottom: 2rem;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto 3rem;
 }
 
 .rodape h3,
 .rodape h4 {
   color: var(--primaria-viva);
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.rodape p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e0e0e0;
 }
 
 .rodape ul {
@@ -216,13 +271,242 @@ html, body, #root {
 }
 
 .rodape li {
-  margin-bottom: 0.5rem;
-  color: var(--branco);
+  margin-bottom: 0.75rem;
+  color: #f4f4f4;
   font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.rodape li:hover {
+  color: var(--primaria-hover);
+  transform: translateX(6px);
+}
+
+.rodape-social {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.rodape-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primaria-viva);
+  color: var(--branco);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem;
+}
+.rodape-social a:hover {
+  background-color: var(--primaria-hover);
+  transform: scale(1.15);
 }
 
 .copy {
   text-align: center;
   font-size: 0.875rem;
   color: #ffffffb3;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1.75rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+/* ANIMAÇÕES SUAVES */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* RESPONSIVIDADE */
+
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    text-align: left;
+    padding: 4rem 3rem 5rem;
+    gap: 4rem;
+  }
+
+  .hero-conteudo {
+    flex: 1;
+  }
+
+  .hero-img {
+    flex: 1;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-conteudo h1 {
+    font-size: 1.9rem;
+  }
+
+  .btn-loja {
+    width: 100%;
+  }
+
+  .produtos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-produto img.imagem-produto {
+    height: 180px;
+  }
+
+  .guia {
+    padding: 3rem 1rem 4rem;
+    max-width: 100%;
+  }
+
+  .guia p,
+  .guia .texto-destaque {
+    font-size: 1rem;
+  }
+}
+.vendas-evento {
+  background: var(--branco);
+  max-width: 900px;
+  margin: 4rem auto 5rem;
+  padding: 3.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(202, 54, 142, 0.12);
+  text-align: center;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.vendas-evento-conteudo h2 {
+  font-size: 2.25rem;
+  color: var(--primaria-escura);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.vendas-evento-conteudo .texto-destaque {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primaria-hover);
+  margin-bottom: 1rem;
+}
+
+.vendas-evento-conteudo .descricao-evento {
+  font-size: 1.1rem;
+  color: var(--texto);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imagens-evento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.imagens-evento img {
+  width: 100%;
+  max-width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(202, 54, 142, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.imagens-evento img:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 480px) {
+  .vendas-evento {
+    padding: 2.5rem 1rem;
+    margin: 3rem 1rem 4rem;
+  }
+
+  .vendas-evento-conteudo h2 {
+    font-size: 1.8rem;
+  }
+
+  .vendas-evento-conteudo .texto-destaque {
+    font-size: 1.1rem;
+  }
+
+  .vendas-evento-conteudo .descricao-evento {
+    font-size: 1rem;
+  }
+
+  .imagens-evento {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .imagens-evento img {
+    height: 140px;
+  }
+}
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background-animation li {
+  position: absolute;
+  display: block;
+  background: rgba(255, 255, 255, 0.1); /* cor da bolinha */
+  border-radius: 50%;
+  bottom: -150px;
+  animation: float 20s linear infinite; /* aqui chama a animação */
+}
+.background-animation li {
+  background: rgba(255, 255, 255, 0.15); /* mais visível */
+  filter: blur(1px); /* deixa suave */
+  animation: float 25s linear infinite; /* mais lenta */
+}
+
+/* Continua até o nth-child(10) como no seu código */
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
 }

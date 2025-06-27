@@ -1,36 +1,29 @@
 @import '../../styles/variables.css';
 
+
+/* ESTRUTURA GERAL */
 .pagina-produtos {
-  background: var(--fundo-suave);
-  color: var(--texto);
-  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--fundo-suave);
+  color: var(--primaria-escura);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Blocos principais */
-.cabecalho,
-.sobre,
-.produtos-loja,
-.guia-compras,
-.cabine,
-.rodape {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* Cabeçalho */
+/* CABEÇALHO */
 .cabecalho {
   padding: 4rem 1rem 2rem;
   text-align: center;
   background-color: var(--branco);
+  animation: fadeInUp 0.8s ease forwards;
 }
 
 .cabecalho h1 {
   font-size: 2.5rem;
   font-weight: 700;
+  color: var(--primaria-escura);
   margin-bottom: 1rem;
 }
 
@@ -40,42 +33,55 @@
 
 .cabecalho p {
   font-size: 1.125rem;
-  color: var(--texto-secundario);
+  color: var(--texto);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* Sobre */
+/* SOBRE */
 .sobre {
-  background: #fef0f6;
+  background-color: #fef0f6;
   text-align: center;
   padding: 4rem 1rem 3rem;
 }
 
 .sobre h2 {
   font-size: 2rem;
+  color: var(--primaria-escura);
   margin-bottom: 1rem;
 }
 
 .sobre p {
   max-width: 720px;
   margin: 0 auto 2rem;
+  font-size: 1.05rem;
   color: var(--texto);
+  line-height: 1.6;
 }
 
 .cartoes-sobre {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .cartao {
   background: var(--branco);
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
-  font-weight: 500;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  color: var(--primaria-escura);
+  transition: transform 0.3s ease;
 }
 
-/* Produtos Loja */
+.cartao:hover {
+  transform: translateY(-6px);
+}
+
+/* PRODUTOS */
 .produtos-loja {
   padding: 4rem 1rem;
   background: var(--branco);
@@ -84,7 +90,9 @@
 
 .produtos-loja h2 {
   font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 2rem;
+  color: var(--primaria-escura);
 }
 
 .produtos-grid {
@@ -97,98 +105,122 @@
 .card-produto {
   background: var(--branco);
   border: 1px solid #f3d2e2;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1.25rem;
   width: 100%;
   max-width: 320px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .card-produto:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 28px rgba(202, 54, 142, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(202, 54, 142, 0.15);
 }
 
 .card-produto img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 1rem;
+  border: 2px solid var(--fundo-suave);
 }
 
 .card-produto h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
   color: var(--primaria-escura);
+}
+
+/* BOTÕES */
+.btn-rosa,
+.btn-rosa-outline,
+.btn-rosa-claro {
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-rosa {
   background-color: var(--primaria-viva);
   color: var(--branco);
-  padding: 0.5rem 1.2rem;
-  border: none;
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(202, 54, 142, 0.3);
 }
 
 .btn-rosa:hover {
   background-color: var(--primaria-hover);
 }
 
-/* Guia de Compras */
+.btn-rosa-claro {
+  background-color: #f7e0ef;
+  color: var(--primaria-escura);
+}
+
+.btn-rosa-claro:hover {
+  background-color: #ebc6dd;
+}
+
+.btn-rosa-outline {
+  border: 2px solid var(--primaria-viva);
+  color: var(--primaria-viva);
+  background: transparent;
+}
+
+.btn-rosa-outline:hover {
+  background-color: #fff0f8;
+}
+
+/* GUIA DE COMPRAS */
 .guia-compras {
+  background: var(--branco);
   padding: 4rem 1rem;
   text-align: center;
-  background: var(--branco);
 }
 
 .guia-compras h2 {
   font-size: 2rem;
+  color: var(--primaria-escura);
+  font-weight: 700;
+  margin-bottom: 2rem;
 }
 
 .blocos-guia {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 .bloco {
   background: var(--fundo-suave);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  padding: 2rem 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.bloco:hover {
+  transform: translateY(-5px);
 }
 
 .bloco .icone {
   font-size: 2rem;
-  display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--primaria-viva);
 }
 
 .bloco h4 {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: var(--primaria-escura);
 }
 
-.bloco button {
-  background-color: var(--primaria-viva);
-  color: var(--branco);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.bloco button:hover {
-  background-color: var(--primaria-hover);
-}
-
-/* Cabine de Fotos */
+/* CABINE */
 .cabine {
   padding: 4rem 1rem;
   background: var(--branco);
@@ -198,33 +230,43 @@
 .cabine h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--primaria-escura);
 }
 
 .cabine p {
   margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--texto);
 }
 
+/* MAIS PRODUTOS */
+.mais-produtos {
+  text-align: center;
+  margin-top: 3rem;
+}
 
-/* Rodapé */
+/* RODAPÉ */
 .rodape {
-  background: var(--primaria-escura);
+  background: linear-gradient(135deg, var(--primaria-escura), #091c45);
   color: var(--branco);
-  padding: 3rem 1rem;
+  padding: 4rem 1.5rem 2rem;
   width: 100%;
-  margin-top: auto;
-  overflow-x: hidden;
+  animation: fadeInUp 0.8s ease forwards;
 }
 
 .rodape-grid {
   display: grid;
-  gap: 2rem;
+  gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
 }
 
 .rodape h4 {
   color: var(--primaria-viva);
+  font-weight: 700;
   margin-bottom: 1rem;
+  font-size: 1.125rem;
 }
 
 .rodape ul {
@@ -234,58 +276,72 @@
 }
 
 .rodape li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   font-size: 0.95rem;
+  color: #f4f4f4;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.rodape li:hover {
+  color: var(--primaria-hover);
+  transform: translateX(4px);
 }
 
 .copy {
   text-align: center;
   font-size: 0.875rem;
   color: #ffffffb3;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Botões de ação nos cards */
-.botoes-produto {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.6rem;
-  margin-top: 1rem;
+/* ANIMAÇÕES */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.btn-rosa-outline {
-  border: 2px solid var(--primaria-viva);
-  color: var(--primaria-viva);
-  background: transparent;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
+/* RESPONSIVIDADE */
+@media (max-width: 480px) {
+  .cabecalho h1 {
+    font-size: 2rem;
+  }
+
+  .card-produto img {
+    height: 160px;
+  }
+
+  .produtos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cartoes-sobre,
+  .blocos-guia {
+    grid-template-columns: 1fr;
+  }
+}
+/* Animação de Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.btn-rosa-outline:hover {
-  background-color: #fbe5f2;
+.card-produto {
+  animation: fadeIn 0.5s ease forwards;
 }
 
-/* Botão para mais produtos */
-.mais-produtos {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.btn-rosa-claro {
-  background-color: #f7e0ef;
-  color: var(--primaria-escura);
-  padding: 0.6rem 1.3rem;
-  border-radius: 999px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.btn-rosa-claro:hover {
-  background-color: #ebc6dd;
-}

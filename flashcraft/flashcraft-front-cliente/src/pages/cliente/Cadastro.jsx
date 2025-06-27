@@ -48,46 +48,56 @@ function Cadastro() {
   };
 
   return (
-    <div className="cadastro-wrapper">
-      <form className="cadastro-card" onSubmit={handleCadastro}>
-        <h2>Crie sua conta</h2>
-        <input
-          type="text"
-          placeholder="Nome completo"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Seu e-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Sua senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Confirmar senha"
-          value={confirmarSenha}
-          onChange={(e) => setConfirmarSenha(e.target.value)}
-          required
-        />
-        <button type="submit">Cadastrar</button>
+    <div className="login-background">
+      <ul className="background-animation">
+        {Array.from({ length: 10 }).map((_, i) => (
+          <li key={i}></li>
+        ))}
+      </ul>
 
-        {erro && <p className="mensagem-erro">{erro}</p>}
-        {sucesso && <p className="mensagem-sucesso">Cadastro realizado! Redirecionando...</p>}
+      <div className="admin-login">
+        <h1>Crie sua conta</h1>
+        <form onSubmit={handleCadastro}>
+          <input
+            type="text"
+            placeholder="Nome completo"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Seu e-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirmar senha"
+            value={confirmarSenha}
+            onChange={(e) => setConfirmarSenha(e.target.value)}
+            required
+          />
+          {erro && <p className="erro">{erro}</p>}
+          {sucesso && <p className="mensagem-sucesso">Cadastro realizado! Redirecionando...</p>}
+          <button type="submit">Cadastrar</button>
 
-        <p className="link-extra">
-          Já tem conta? <Link to="/login">Faça login</Link>
-        </p>
-      </form>
+          <p style={{ marginTop: '18px', fontSize: '0.9rem', color: '#333' }}>
+            Já tem conta?{' '}
+            <Link to="/login" style={{ color: '#CA368E', fontWeight: '600' }}>
+              Faça login
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

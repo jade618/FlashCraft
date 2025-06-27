@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import apiCliente from '../../services/apiCliente';
-import './Login.css';
+import './Login.css'; // CSS baseado no estilo que você mandou
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -19,11 +19,10 @@ function Login() {
       const resposta = await apiCliente.post('/auth/login', { email, senha });
       const { usuario, token } = resposta.data;
 
-      localStorage.setItem('token', token); // <-- Corrigido
-      localStorage.setItem('usuario', JSON.stringify(usuario)); // <-- Corrigido
+      localStorage.setItem('token', token);
+      localStorage.setItem('usuario', JSON.stringify(usuario));
 
       navigate('/produtos');
-
     } catch (err) {
       if (err.response?.status === 401) {
         setErro('Email ou senha incorretos.');
@@ -34,29 +33,40 @@ function Login() {
   };
 
   return (
-    <div className="login-wrapper">
-      <form className="login-card" onSubmit={handleLogin}>
-        <h2>Entrar na Flashcraft</h2>
-        <input
-          type="email"
-          placeholder="Seu e-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Sua senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
-        <button type="submit">Entrar</button>
-        {erro && <p className="mensagem-erro">{erro}</p>}
-        <p className="link-extra">
-          Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
-        </p>
-      </form>
+    <div className="login-background">
+      <ul className="background-animation">
+        {Array.from({ length: 10 }).map((_, i) => (
+          <li key={i}></li>
+        ))}
+      </ul>
+
+      <div className="admin-login"> {/* Mantive essa classe pra aproveitar o CSS */}
+        <h1>Entrar na Flashcraft</h1>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Seu e-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          {erro && <p className="erro">{erro}</p>}
+          <button type="submit">Entrar</button>
+          <p style={{ marginTop: '18px', fontSize: '0.9rem', color: '#333' }}>
+            Não tem conta?{' '}
+            <Link to="/cadastro" style={{ color: '#CA368E', fontWeight: '600' }}>
+              Cadastre-se
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

@@ -30,4 +30,80 @@ html, body, #root {
 
 *, *::before, *::after {
   box-sizing: border-box;
+} 
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
+
+.background-animation li {
+  position: absolute;
+  display: block;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  bottom: -150px;
+  animation: float 20s linear infinite;
+}
+
+.background-animation li:nth-child(1) {
+  left: 25%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+}
+.background-animation li:nth-child(2) {
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+.background-animation li:nth-child(3) {
+  left: 70%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 4s;
+  animation-duration: 18s;
+}
+.background-animation li:nth-child(4) {
+  left: 40%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 6s;
+  animation-duration: 16s;
+}
+.background-animation li:nth-child(5) {
+  left: 80%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 8s;
+  animation-duration: 14s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Conteúdo acima da animação */
+main, header, footer, #root {
+  position: relative;
+  z-index: 1;
+}
+

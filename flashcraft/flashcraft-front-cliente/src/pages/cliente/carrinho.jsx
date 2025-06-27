@@ -8,6 +8,10 @@ function Carrinho() {
     (acc, item) => acc + (item.preco * (item.quantidade || 1)),
     0
   );
+  <ul className="background-animation">
+      {Array.from({ length: 10 }).map((_, i) => (
+      <li key={i}></li>))}
+  </ul>
 
   async function handleFinalizarCompra() {
     try {
@@ -33,7 +37,6 @@ function Carrinho() {
       });
 
       for (const item of carrinho) {
-        console.log('Enviando pedido para o produto:', item.nome);
         const response = await fetch('http://localhost:3000/api/pedidosCliente', {
           method: 'POST',
           headers: {
@@ -67,42 +70,50 @@ function Carrinho() {
   }
 
   return (
-    <main className="carrinho-container">
-      <section className="carrinho-cabecalho">
-        <h1>Seu <span className="destaque">Carrinho</span></h1>
-        <p>Confira os itens antes de finalizar sua compra.</p>
-      </section>
+    <div className="carrinho-background">
+      <ul className="background-animation">
+        {Array.from({ length: 10 }).map((_, i) => (
+          <li key={i}></li>
+        ))}
+      </ul>
 
-      {carrinho.length === 0 ? (
-        <p className="carrinho-vazio">Seu carrinho está vazio.</p>
-      ) : (
-        <section className="carrinho-itens">
-          {carrinho.map((item) => (
-            <div className="carrinho-card" key={item._id}>
-              <div className="imagem-carrinho">
-                <img
-                  src={item.imagem || 'https://via.placeholder.com/200'}
-                  alt={item.nome}
-                />
-              </div>
-              <div className="info-carrinho">
-                <h3>{item.nome}</h3>
-                <p>Quantidade: {item.quantidade || 1}</p>
-                <p>Preço unitário: R$ {parseFloat(item.preco).toFixed(2)}</p>
-                <p>Total: R$ {(item.preco * (item.quantidade || 1)).toFixed(2)}</p>
-                <button onClick={() => removerDoCarrinho(item._id)}>Remover</button>
-              </div>
-            </div>
-          ))}
-
-          <div className="carrinho-resumo">
-            <h2>Total geral: <span>R$ {totalGeral.toFixed(2)}</span></h2>
-            <button className="btn-finalizar" onClick={handleFinalizarCompra}>Finalizar Compra</button>
-            <button className="btn-limpar" onClick={limparCarrinho}>Esvaziar Carrinho</button>
-          </div>
+      <main className="carrinho-container">
+        <section className="carrinho-cabecalho">
+          <h1>Seu <span className="destaque">Carrinho</span></h1>
+          <p>Confira os itens antes de finalizar sua compra.</p>
         </section>
-      )}
-    </main>
+
+        {carrinho.length === 0 ? (
+          <p className="carrinho-vazio">Seu carrinho está vazio.</p>
+        ) : (
+          <section className="carrinho-itens">
+            {carrinho.map((item) => (
+              <div className="carrinho-card" key={item._id}>
+                <div className="imagem-carrinho">
+                  <img
+                    src={item.imagem || 'https://via.placeholder.com/200'}
+                    alt={item.nome}
+                  />
+                </div>
+                <div className="info-carrinho">
+                  <h3>{item.nome}</h3>
+                  <p>Quantidade: {item.quantidade || 1}</p>
+                  <p>Preço unitário: R$ {parseFloat(item.preco).toFixed(2)}</p>
+                  <p>Total: R$ {(item.preco * (item.quantidade || 1)).toFixed(2)}</p>
+                  <button onClick={() => removerDoCarrinho(item._id)}>Remover</button>
+                </div>
+              </div>
+            ))}
+
+            <div className="carrinho-resumo">
+              <h2>Total geral: <span>R$ {totalGeral.toFixed(2)}</span></h2>
+              <button className="btn-finalizar" onClick={handleFinalizarCompra}>Finalizar Compra</button>
+              <button className="btn-limpar" onClick={limparCarrinho}>Esvaziar Carrinho</button>
+            </div>
+          </section>
+        )}
+      </main>
+    </div>
   );
 }
 

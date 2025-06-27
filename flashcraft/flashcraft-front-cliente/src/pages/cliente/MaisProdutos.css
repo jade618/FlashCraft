@@ -1,40 +1,152 @@
+/* Removed all filter-related styles as filters are removed from the component */
+@import '../../styles/variables.css';
+
 .maisprodutos-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  color: #333;
-  background-color: #f9f9f9;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: var(--texto);
+  background-color: var(--fundo-suave);
   overflow: hidden;
-  flex-wrap: wrap; /* Added for responsive design */
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0 1rem;
+  color: var(--primaria-escura);
 }
 
 .filtros {
   width: 100%;
   max-width: 300px;
-  background-color: #fff;
+  background-color: var(--branco);
   border-right: 1px solid #ddd;
   padding: 20px;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
   position: sticky;
-  top: 60px; /* Adjusted to avoid covering navbar */
+  top: 60px;
   left: 0;
   overflow-y: auto;
   z-index: 1000;
   height: calc(100vh - 60px);
-  margin-bottom: 20px;
+  border-radius: 0 12px 12px 0;
+}
+
+.filtros h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--primaria-viva);
+}
+
+.filtros label {
+  display: block;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.filtros select,
+.filtros input[type='number'] {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background-color: var(--branco);
+  transition: border-color 0.3s ease;
+}
+
+.filtros select:focus,
+.filtros input[type='number']:focus {
+  border-color: var(--primaria-viva);
+  outline: none;
+}
+
+.produtos-lista {
+  margin-left: 0;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.produto-card {
+  background-color: var(--branco);
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(202, 54, 142, 0.1);
+}
+
+.produto-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.produto-card h3 {
+  font-size: 1.125rem;
+  margin: 0.5rem 0;
+  color: var(--primaria-escura);
+}
+
+.produto-card p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: var(--texto);
+}
+
+.produto-card button {
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primaria-viva);
+  color: var(--branco);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.produto-card button:hover {
+  background-color: var(--primaria-hover);
 }
 
 @media (min-width: 768px) {
   .maisprodutos-container {
     flex-direction: row;
   }
+
   .filtros {
-    width: 300px;
     position: fixed;
     height: calc(100vh - 60px);
     margin-bottom: 0;
   }
+
   .produtos-lista {
     margin-left: 300px;
   }
@@ -44,123 +156,8 @@
   .maisprodutos-container {
     flex-direction: column;
   }
+
   .produtos-lista {
     margin-left: 0;
   }
-}
-
-.filtros h1 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: var(--primary-color, #e91e63); /* site primary color variable fallback */
-  font-weight: bold;
-}
-
-.filtros label {
-  display: block;
-  margin-bottom: 15px;
-  font-weight: 600;
-  color: #444;
-}
-
-.filtros select,
-.filtros input[type="number"] {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #222;
-  background-color: #fff;
-  transition: border-color 0.3s ease;
-}
-
-.filtros select:focus,
-.filtros input[type="number"]:focus {
-  border-color: #e91e63; /* site primary color */
-  outline: none;
-}
-
-.produtos-lista {
-  margin-left: 0;
-  padding: 20px;
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Changed to auto-fit and adjusted min width */
-  gap: 20px;
-  height: calc(100vh - 60px); /* Adjust height to avoid overflow */
-  overflow-y: auto;
-}
-
-@media (min-width: 768px) {
-  .produtos-lista {
-    margin-left: 300px;
-  }
-}
-.produto-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 220px; /* Limit max width */
-  margin: 0 auto; /* Center cards */
-  aspect-ratio: 1 / 1; /* Make cards square */
-  overflow: hidden;
-}
-
-.produto-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 220px; /* Limit max width */
-  margin: 0 auto; /* Center cards */
-}
-
-.produto-card img {
-  max-width: 100%;
-  height: 150px;
-  object-fit: contain;
-  margin-bottom: 10px;
-  border-radius: 4px;
-}
-
-.produto-card h3 {
-  font-size: 18px;
-  margin: 10px 0 5px;
-  color: #e91e63; /* site primary color */
-}
-
-.produto-card p {
-  margin: 5px 0;
-  color: #555;
-  font-size: 14px;
-}
-
-.produto-card button {
-  margin-top: auto;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #e91e63; /* site primary color */
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.produto-card button:hover {
-  background-color: #c2185b; /* darker shade */
 }
